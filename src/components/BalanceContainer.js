@@ -1,6 +1,6 @@
 import React from 'react';
 
-const AsLi = () => {
+const BalanceContainer = () => {
     return (
         <div>
             <h1>Assets & Liabilities Balance Sheet</h1>
@@ -8,4 +8,4 @@ const AsLi = () => {
     );
 }
 
-export default AsLi;
+export default BalanceContainer;

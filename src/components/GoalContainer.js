@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
 
-class Stock extends Component {
+class GoalContainer extends Component {
     render() {
         return (
             <div>
-                <h1>Investment Tracker</h1>
+                <h1>Goals and Wishlist</h1>
             </div>
         );
     }
 }
 
-export default Stock;
+export default GoalContainer;
