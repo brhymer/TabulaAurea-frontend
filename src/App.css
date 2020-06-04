@@ -1,4 +1,56 @@
-.App {
+/* =========
+   Entire
+========= */ 
+
+*{
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif ;
+  background-color: slategray;
+}
+
+/* =========
+   Nav
+========= */
+
+h1 {
+  text-align: center;
+}
+
+.navbar{
+  list-style: none;
+  display: flex;
+  justify-content: space-around;
+  text-align: center;
+}
+
+.navbtn{
+  border: 1px solid black;
+  display: inline-flex;
+  float: left;
+  margin: 0 40px;
+  font-size: 20px;
+  align-items: center;
+}
+
+/* =========
+   Body
+========= */
+
+/* .cont{     ----NOT FUNCTIONING
+  background: whitesmoke;  
+  margin: 0 15%;
+} */
+
+
+
+/* =========
+   Footer
+========= */
+
+footer {
+  text-align: center;
+}
+
+/* .App {
   text-align: center;
 }
 
@@ -35,4 +87,4 @@
   to {
     transform: rotate(360deg);
   }
-}
+} */
