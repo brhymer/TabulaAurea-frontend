@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import Incomes from './Incomes';
-import Expenses from './Expenses';
+import Incomes from '../components/Incomes';
+import Expenses from '../components/Expenses';
 
 class MonthContainer extends Component {
     render() {

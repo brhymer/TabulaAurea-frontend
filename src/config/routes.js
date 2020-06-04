@@ -1,9 +1,9 @@
 import React from 'react';
 import { Switch, Route } from 'react-router-dom';
-import MonthContainer from '../components/MonthContainer';
-import BalanceContainer from '../components/BalanceContainer';
-import GoalContainer from '../components/GoalContainer';
-import InvestContainer from '../components/InvestContainer';
+import MonthContainer from '../containers/MonthContainer';
+import BalanceContainer from '../containers/BalanceContainer';
+import GoalContainer from '../containers/GoalContainer';
+import InvestContainer from '../containers/InvestContainer';
 
 
 export default (
