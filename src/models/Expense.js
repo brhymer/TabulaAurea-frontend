@@ -16,7 +16,6 @@ class ExpenseModel {
     static update = (expense) => {
         let request = axios.put(`${endPoint}/${expense._id}`, expense);
         return request;
-
     };
 
     static delete = (expense) => {
