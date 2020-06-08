@@ -6,7 +6,7 @@ const endPoint = `http://localhost:3001/assets`
 class AssetModel {
     static all = () => {
         let request = axios.get(endPoint);
-        return request
+        return request;
     };
 
     static create = (asset) => {
