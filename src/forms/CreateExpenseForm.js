@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 
 
 class CreateExpenseForm extends Component {
-    state ={
+    state = {
         name: '',
         amount: '',
     }
