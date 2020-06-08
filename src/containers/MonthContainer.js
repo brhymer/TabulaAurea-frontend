@@ -18,7 +18,7 @@ class MonthContainer extends Component {
 
     componentDidUpdate(prevProps, prevState) {
         if (this.state.expenses !== prevState.expenses) {
-            this.fetchData();
+            this.fetchData(); // think about this.
           }
     };
 
@@ -60,28 +60,28 @@ class MonthContainer extends Component {
         });
     };
 
-    updateIncome = (incomeName, incomeId) => {
+    updateIncome = (incomeObj, incomeId) => {
         const isUpdatedIncome = i => {
             return i._id === incomeId;
         };
 
-        IncomeModel.update(incomeId, incomeName)
+        IncomeModel.update(incomeId, incomeObj)
         .then((res) => {
             let incomes = this.state.incomes;
-            incomes.find(isUpdatedIncome).name = incomeName.name;
+            incomes.find(isUpdatedIncome).name = incomeObj.name;
             this.setState({ incomes: incomes });
         });
     };
 
-    updateExpense = (expenseName, expenseId) => {
+    updateExpense = (expenseObj, expenseId) => {
         const isUpdatedExpense = e => {   
             return e._id === expenseId;
         };
 
-        ExpenseModel.update(expenseId, expenseName)
+        ExpenseModel.update(expenseId, expenseObj)
         .then((res) => {
             let expenses = this.state.expenses;
-            expenses.find(isUpdatedExpense).name = expenseName.name;
+            expenses.find(isUpdatedExpense).name = expenseObj.name;
             this.setState({ expenses: expenses });
         });
     };
