@@ -32,14 +32,14 @@ class Expense extends Component {
                             Remove
                         </button>
                 </div>
-                    <ExpenseForm
-                        expense= {this.props.expense}
-                        style={this.state.formStyle}
-                        autoFocus={true}
-                        buttonName="Update"
-                        updateExpense={this.props.updateExpense}
-                        toggleBodyForm={this.toggleBodyForm}
-                        />
+                <ExpenseForm
+                    expense= {this.props.expense}
+                    style={this.state.formStyle}
+                    autoFocus={true}
+                    buttonName="Update"
+                    updateExpense={this.props.updateExpense}
+                    toggleBodyForm={this.toggleBodyForm}
+                />
             </li>
         );
     }
