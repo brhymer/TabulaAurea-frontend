@@ -16,6 +16,12 @@ class MonthContainer extends Component {
         this.fetchData();
     };
 
+    componentDidUpdate(prevProps, prevState) {
+        if (this.state.expenses !== prevState.expenses) {
+            this.fetchData();
+          }
+    };
+
     fetchData = () => {
         IncomeModel.all().then((res) => {
             this.setState ({
@@ -29,89 +35,104 @@ class MonthContainer extends Component {
         });
     }
 
-    // createIncome = (income) => {
-    //     let newIncome = {
-    //         body: income,
-    //         amount: amount
-    //     };
-    //     IncomeModel.create(newIncome).then((res) => {
-    //         let incomes = this.state.incomes;
-    //         incomes.push(res.data);
-    //         this.setState({ incomes: incomes })
-    //     });
-    // };
+    createIncome = (name, amount) => {
+        let newIncome = {
+            name: name,
+            amount: amount
+        };
+        IncomeModel.create(newIncome).then((res) => {
+            let incomes = this.state.incomes;
+            let newIncomes = incomes.push(res.data);
+            this.setState({ newIncomes })
+        });
+    };
 
-    // createExpense = (expense) => {
-    //     let newExpense = {
-    //         body: expense,
-    //         amount: amount
-    //     };
-    //     ExpenseModel.create(newExpense).then((res) => {
-    //         let expenses = this.state.expenses;
-    //         expenses.push(res.data);
-    //         this.setState({ expenses: expenses })
-    //     });
-    // };
+    createExpense = (name, amount) => {    
+        let newExpense = {
+            name: name, 
+            amount: amount
+        }
+    
+        ExpenseModel.create(newExpense).then((res) => {
+            let expenses = this.state.expenses;
+            let newExpenses = expenses.push(res.data);
+            this.setState({ newExpenses })
+        });
+    };
 
-    updateIncome = income => {
+    updateIncome = (incomeName, incomeId) => {
         const isUpdatedIncome = i => {
-            return i._id === income._id;
+            return i._id === incomeId;
         };
 
-        IncomeModel.update(income)
+        IncomeModel.update(incomeId, incomeName)
         .then((res) => {
             let incomes = this.state.incomes;
-            incomes.find(isUpdatedIncome).body = income.body;
+            incomes.find(isUpdatedIncome).name = incomeName.name;
             this.setState({ incomes: incomes });
         });
     };
 
-    updateExpense = expense => {
-        const isUpdatedExpense = e => {
-            return e._id === expense._id;
+    updateExpense = (expenseName, expenseId) => {
+        const isUpdatedExpense = e => {   
+            return e._id === expenseId;
         };
 
-        ExpenseModel.update(expense)
+        ExpenseModel.update(expenseId, expenseName)
         .then((res) => {
             let expenses = this.state.expenses;
-            expenses.find(isUpdatedExpense).body = expense.body;
+            expenses.find(isUpdatedExpense).name = expenseName.name;
             this.setState({ expenses: expenses });
         });
     };
 
-    // deleteIncome = (income) => {
-    //     IncomeModel.delete(income).then((res) => {
-    //         return income._id !== res.data._id;
-    //     });
-    //     this.setState({ incomes });
-    // };
+    deleteIncome = (income) => {
+        IncomeModel.delete(income).then((res) => {
+            return income._id !== res.data._id;
+        });
+        this.setState({ incomes: this.state.expenses });
+    };
  
-    // deleteExpense = (expense) => {
-    //     ExpenseModel.delete(expense).then((res) => {
-    //         return expense._id !== res.data._id;
-    //     });
-    //     this.setState({ expenses });
-    // };
+    deleteExpense = (expense) => {
+        ExpenseModel.delete(expense).then((res) => {
+            // let expenses = this.state.expenses.filter(function(expense) {
+
+                return expense._id !== res.data._id;
+            // });
+        })
+        this.setState({ expenses: this.state.expenses });  // undefined
+    };
 
     render() {
         return (
-            <div>
+            <>
                 <h1>Monthly Budget</h1>
-                <CreateIncomeForm 
-                    createIncome={this.createIncome}/>
-                <CreateExpenseForm 
-                    createExpense={this.createExpense}/>
-                <Incomes 
-                    incomes={this.state.incomes}
-                    updateIncome={this.updateIncome}
-                    deleteIncome={this.deleteIncome}
-                />
-                <Expenses 
-                    expenses={this.state.expenses}
-                    updateExpense={this.updateExpense}
-                    deleteExpense={this.deleteExpense}
-                />
-            </div>
+                <div className="lr">
+                
+                    <section className="left"> Income Sources
+                        <p className="entry">Entry &nbsp;&nbsp;&nbsp;&nbsp;Cost</p>
+                        <Incomes 
+                            incomes={this.state.incomes}
+                            updateIncome={this.updateIncome}
+                            deleteIncome={this.deleteIncome}
+                        /> 
+                        <CreateIncomeForm 
+                            createIncome={this.createIncome}/>
+                    </section>
+                
+                    <section className="right"> Expenses 
+                        <p className="entry">Entry &nbsp;&nbsp;&nbsp;&nbsp;Cost</p>
+
+                        <Expenses 
+                            expenses={this.state.expenses}
+                            updateExpense={this.updateExpense}
+                            deleteExpense={this.deleteExpense}
+                        />
+                        <CreateExpenseForm 
+                            createExpense={this.createExpense}/>
+                    </section>
+                </div>
+            </>
         );
     }
 }

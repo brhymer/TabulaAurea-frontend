@@ -2,7 +2,7 @@
    Entire
 ========= */ 
 
-*{
+body{
   font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif ;
   background-color: slategray;
 }
@@ -40,7 +40,73 @@ h1 {
   margin: 0 15%;
 } */
 
+.entry {
+  width: 200px;
+}
+li {
+  list-style: none;
+}
+.list-item {
+  padding: 2px 15px 0 0;
+  margin: 10px 0;
+  width: 100px;
+  /* display: inline-block; */
+}
 
+.lr {
+  display: grid;
+  margin: 0 8%;
+  grid-template-columns: repeat(2, 1fr);
+  /* grid-auto-rows: auto; */
+  grid-gap: 1rem;
+}
+
+.left {
+  /* display: flex; */
+  border: 1px black solid;
+  background-color: azure;
+  /* align-items: left; */
+}
+.right {
+  /* display: flex; */
+  border: 1px black solid;
+  background-color: azure;
+  /* align-items: right; */
+}
+
+.edit {
+  border: 1px solid black;
+  background-color: rgb(27, 82, 73); 
+  padding: 0 2px;
+  margin: 0 4px;
+  /* display: inline-block; */
+}
+
+.remove {
+  border: 1px solid black;
+  background-color: rgb(143, 69, 20); 
+  /* display: inline-block; */
+  /* padding: 0 2px; */
+}
+
+
+.btn {
+  border: none;
+  border-radius: 2px;
+  outline: none;
+  padding: 1.018em 1.2em;
+  color: #fff;
+  text-transform: uppercase;
+  transition: all 0.3s;
+  font-size: 0.8em;
+  text-align: center;
+background-color: #444;
+cursor: pointer;
+}
+
+input {
+  width: 100px;
+}
 
 /* =========
    Footer

@@ -1,37 +1,51 @@
 import React, { Component } from 'react';
 
+
+
 class CreateIncomeForm extends Component {
-    state = {
-        income: '',
-    };
+    state ={
+        name: '',
+        amount: '',
+    }
 
     onInputChange = (event) => {
         this.setState({
-            income: event.target.value,
+            name: event.target.value
+
         });
     };
+    onInputChange2 = (event) => {
+        this.setState({
+            amount: event.target.value
+        });
+    }
 
     onFormSubmit = (event) => {
         event.preventDefault();
-        let income = this.state.income;
+        let income = this.state; 
         this.props.createIncome(income);
-        this.setState({
-            income: '',
+        this.setState({ 
+            name: '', amount: ''
         });
     };
 
     render() {
         return (
-            <div>
+            <>
                 <form onSubmit={this.onFormSubmit} id="incform">
                     <input
                         onChange={this.onInputChange}
                         type="text" id="newItemDescription"
-                        value={this.state.income}
+                        value={this.state.name}
+                    />
+                    <input
+                        onChange={this.onInputChange2}
+                        type="number" id="newItemAmount"
+                        value={this.state.amount}
                     />
                     <button type="submit" id="addIncome" >Save</button>
                 </form>
-            </div>
+            </>
         );
     }
 }
