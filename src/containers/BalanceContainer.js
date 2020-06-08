@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import AssetModel from '../models/Asset';
-// import LiabilityModel from '../models/Liability';
+import LiabilityModel from '../models/Liability';
 import Assets from '../components/Assets';
-// import Liabilities from '../components/Liabilities';
+import Liabilities from '../components/Liabilities';
 import CreateAssetForm from '../forms/CreateAssetForm.js';
-// import CreateLiabilityForm from '../forms/CreateLiabilityForm';
+import CreateLiabilityForm from '../forms/CreateLiabilityForm';
 
 class BalanceContainer extends Component {
 
@@ -17,9 +17,11 @@ class BalanceContainer extends Component {
         this.fetchData();
     };
 
-    // componentDidUpdate(prevProps, prevState) {
-
-    // };
+    componentDidUpdate(prevProps, prevState) {
+        if (this.state.assets !== prevState.assets || this.state.liabilities !== prevState.liabilities) {
+            this.fetchData();
+        }
+    };
 
     fetchData = () => {
         AssetModel.all().then((res) => {
@@ -27,7 +29,11 @@ class BalanceContainer extends Component {
                 assets: res.data.assets,
             });
         });
-        // LiabilityModel.all()
+        LiabilityModel.all().then((res) => {
+            this.setState ({
+                liabilities: res.data.liabilities,
+            });
+        });
     }
 
     createAsset = (name, value, intRate) => {
@@ -43,7 +49,18 @@ class BalanceContainer extends Component {
         });
     }
 
-    // createLiability = ()
+    createLiability = (name, value, intRate) => {
+        let newLiability = {
+            name: name,
+            value: value,
+            intRate: intRate
+        };
+        LiabilityModel.create(newLiability).then((res) => {
+            let liabilities = this.state.liabilities;
+            let newLiabilities = liabilities.push(res.data);
+            this.setState({ newLiabilities })
+        });
+    }
 
     updateAsset = (assetObj, assetId) => {
         const isUpdatedAsset = a => {
@@ -58,7 +75,18 @@ class BalanceContainer extends Component {
         });
     };
 
-    // updateLiability = ()
+    updateLiability = (liabObj, liabId) => {
+        const isUpdatedLiability = l => {
+            return l._id === liabId;
+        };
+
+        LiabilityModel.update(liabId, liabObj)
+        .then((res) => {
+            let liabilities = this.state.liabilities;
+            liabilities.find(isUpdatedLiability).name = liabObj.name
+            this.setState({ liabilities: liabilities })
+        });
+    };
 
     deleteAsset = (asset) => {
         AssetModel.delete(asset).then((res) => {
@@ -67,7 +95,12 @@ class BalanceContainer extends Component {
         this.setState({ assets: this.state.assets });
     };
 
-    // deleteLiability = ()
+    deleteLiability = (liability) => {
+        LiabilityModel.delete(liability).then((res) => {
+            return liability._id !== res.data._id;
+        });
+        this.setState({ liabilities: this.state.liabilities });
+    };
 
 
     render() {
@@ -88,8 +121,13 @@ class BalanceContainer extends Component {
 
                     <section className="right">Liabilities
                     <p className="entry">Entry &nbsp;&nbsp;&nbsp;&nbsp;Value&nbsp;&nbsp;&nbsp;&nbsp;Interest Rate</p>
-                    {/* <Liabilities /> */}
-                    {/* <CreateLiabilityForm /> */}
+                    <Liabilities
+                        liabilities={this.state.liabilities}
+                        updateLiability={this.updateLiability}
+                        deleteLiability={this.deleteLiability} 
+                    />
+                    <CreateLiabilityForm
+                        createLiability={this.createLiability} />
                     </section>
                 </div>
             </>
