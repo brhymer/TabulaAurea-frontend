@@ -1,11 +1,9 @@
 import React, { Component } from 'react';
 
-
-
-class CreateExpenseForm extends Component {
+class CreateGoalForm extends Component {
     state = {
         name: '',
-        amount: '',
+        date: ''
     }
 
     onInputChange = (event) => {
@@ -13,26 +11,26 @@ class CreateExpenseForm extends Component {
             name: event.target.value
         });
     };
-    
+
     onInputChange2 = (event) => {
         this.setState({
-            amount: event.target.value
+            date: event.target.value
         });
-    }
+    };
 
     onFormSubmit = (event) => {
         event.preventDefault();
-        let expense = this.state; 
-        this.props.createExpense(expense);
-        this.setState({ 
-            name: '', amount: ''
+        let goal = this.state;
+        this.props.createGoal(goal);
+        this.setState({
+            name: '', date: ''
         });
     };
 
     render() {
         return (
             <>
-                <form onSubmit={this.onFormSubmit} id="expform">
+                <form onSubmit={this.onFormSubmit} id="goalform">
                     <input
                         onChange={this.onInputChange}
                         type="text" id="newItemDescription"
@@ -40,14 +38,14 @@ class CreateExpenseForm extends Component {
                     />
                     <input
                         onChange={this.onInputChange2}
-                        type="number" id="newItemAmount"
-                        value={this.state.amount}
+                        type="date" id="newItemDate"
+                        value={this.state.date}
                     />
-                    <button type="submit" id="addExpense" >Save</button>
+                    <button type="submit" id="addGoal">Save</button>
                 </form>
             </>
         );
     }
 }
 
-export default CreateExpenseForm;
+export default CreateGoalForm;
