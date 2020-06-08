@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import AssetModel from '../models/Asset';
-import LiabilityModel from '../models/Liability';
+// import LiabilityModel from '../models/Liability';
 import Assets from '../components/Assets';
-import Liabilities from '../components/Liabilities';
+// import Liabilities from '../components/Liabilities';
 import CreateAssetForm from '../forms/CreateAssetForm.js';
-import CreateLiabilityForm from '../forms/CreateLiabilityForm';
+// import CreateLiabilityForm from '../forms/CreateLiabilityForm';
 
 class BalanceContainer extends Component {
 
@@ -88,7 +88,7 @@ class BalanceContainer extends Component {
 
                     <section className="right">Liabilities
                     <p className="entry">Entry &nbsp;&nbsp;&nbsp;&nbsp;Value&nbsp;&nbsp;&nbsp;&nbsp;Interest Rate</p>
-                    <Liabilities />
+                    {/* <Liabilities /> */}
                     {/* <CreateLiabilityForm /> */}
                     </section>
                 </div>
