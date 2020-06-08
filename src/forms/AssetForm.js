@@ -53,15 +53,15 @@ class AssetForm extends Component {
                         value={(this.state.name) || ''}/>
                     <input
                         autoFocus={ this.props.autoFocus }
-                        onChange={ this.onChange }
+                        onChange={ this.onChange2 }
                         placeholder={ this.props.value }
-                        type="text"
+                        type="number"
                         value={(this.state.value) || ''}/>
                     <input
                         autoFocus={ this.props.autoFocus }
-                        onChange={ this.onChange }
+                        onChange={ this.onChange3 }
                         placeholder={ this.props.intRate }
-                        type="text"
+                        type="number"
                         value={(this.state.intRate) || ''}/>
                     <button type= "submit" className="btn">{this.props.buttonName}</button>
                 </form>                
