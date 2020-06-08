@@ -18,7 +18,7 @@ class BalanceContainer extends Component {
     };
 
     componentDidUpdate(prevProps, prevState) {
-        if (this.state.assets !== prevState.assets || this.state.liabilities !== prevState.liabilities) {
+        if (this.state.assets !== prevState.assets) {
             this.fetchData();
         }
     };
@@ -44,7 +44,7 @@ class BalanceContainer extends Component {
         };
         AssetModel.create(newAsset).then((res) => {
             let assets = this.state.assets;
-            let newAssets = assets.push(res.date);
+            let newAssets = assets.push(res.data);
             this.setState({ newAssets })
         });
     }

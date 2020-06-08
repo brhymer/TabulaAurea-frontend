@@ -35,7 +35,7 @@ class LiabilityForm extends Component {
     componentDidMount(){
         this.setState({
             name: this.props.liability.name,
-            value: this.props.liablity.value,
+            value: this.props.liability.value,
             intRate: this.props.liability.intRate
         })
     };
