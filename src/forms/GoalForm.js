@@ -1,40 +1,39 @@
 import React, { Component } from 'react';
 
-class ExpenseForm extends Component {
-    state = { 
+class GoalForm extends Component {
+    state = {
         name: '',
-        amount: ''
+        date: ''
     }
-    
+
     onChange = (event) => {
         this.setState({
-            name: event.target.value,
+            name: event.target.value
         });
     };
+
     onChange2 = (event) => {
         this.setState({
-            amount: event.target.value,
+            date: event.target.value
         });
     };
 
     onSubmit = (event) => {
         event.preventDefault();
         this.props.toggleBodyForm()
-        const expense = this.state;
-        this.props.updateExpense(expense, this.props.expense._id);
-        
+        const goal = this.state;
+        this.props.updateGoal(goal, this.props.goal._id);
     };
 
     componentDidMount(){
         this.setState({
-            name: this.props.expense.name, amount: this.props.expense.amount
-        }) 
+            name: this.props.goal.name, date: this.props.goal.date
+        })
     }
-
 
     render() {
         return (
-            <div style={this.props.style} className="expform">
+            <div style={this.props.style} className="goalform">
                 <form onSubmit={ this.onSubmit } >
                     <input 
                         autoFocus={ this.props.autoFocus }
@@ -45,9 +44,9 @@ class ExpenseForm extends Component {
                     <input 
                         autoFocus={ this.props.autoFocus }
                         onChange={ this.onChange2 }
-                        placeholder={ this.props.amount }
-                        type="number"
-                        value={(this.state.amount) || ''}/>
+                        placeholder={ this.props.date }
+                        type="date"
+                        value={(this.state.date) || ''}/>
                     <button type="submit" className="btn">{this.props.buttonName}</button>
                 </form>
             </div>
@@ -55,4 +54,4 @@ class ExpenseForm extends Component {
     }
 }
 
-export default ExpenseForm;
+export default GoalForm;
