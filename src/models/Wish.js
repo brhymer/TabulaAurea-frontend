@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 
-const endPoint = `http://localhost:3001/wishes`
+const endPoint = `http://localhost:3001/wishlist`
 
 class WishModel {
     static all = () => {
