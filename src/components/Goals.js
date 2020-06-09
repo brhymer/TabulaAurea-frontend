@@ -1,11 +1,25 @@
-import React from 'react';
+import React, { Component } from 'react';
+import Goal from './Goal';
 
-const Goals = () => {
+class Goals extends Component {
+    render() {
+        let goalList = this.props.goals.map((goal) => {
+        return (
+            <Goal
+                key={goal._id}
+                goal={goal}
+                updateGoal={this.props.updateGoal}
+                deleteGoal={this.props.deleteGoal}
+            />
+        );
+    });
+
     return (
-        <div>
-            Goals
-        </div>
+        <>
+            { goalList }
+        </>
     );
+    }
 }
 
 export default Goals;
