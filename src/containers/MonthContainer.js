@@ -5,6 +5,8 @@ import Incomes from '../components/Incomes';
 import Expenses from '../components/Expenses';
 import CreateIncomeForm from '../forms/CreateIncomeForm';
 import CreateExpenseForm from '../forms/CreateExpenseForm';
+import Sum from '../components/Sum';
+import ResultContainer from './ResultContainer';
 
 class MonthContainer extends Component {
     state= {
@@ -13,21 +15,28 @@ class MonthContainer extends Component {
     };
 
     componentDidMount() {
-        this.fetchData();
+        this.fetchInc();
+        this.fetchExp();
     };
 
     componentDidUpdate(prevProps, prevState) {
         if (this.state.expenses !== prevState.expenses) {
-            this.fetchData(); // think about this.
+            this.fetchExp(); 
+          }
+        if (this.state.incomes !== prevState.incomes) {
+            this.fetchInc(); 
           }
     };
 
-    fetchData = () => {
+    fetchInc = () => {
         IncomeModel.all().then((res) => {
             this.setState ({
                 incomes: res.data.incomes,
             });
         });
+    }
+
+    fetchExp = () => {
         ExpenseModel.all().then((res) => {
             this.setState ({
                 expenses: res.data.expenses,
@@ -42,8 +51,9 @@ class MonthContainer extends Component {
         };
         IncomeModel.create(newIncome).then((res) => {
             let incomes = this.state.incomes;
-            let newIncomes = incomes.push(res.data);
-            this.setState({ newIncomes })
+            // let newIncomes = 
+            incomes.push(res.data);
+            // this.setState({ newIncomes })
         });
     };
 
@@ -55,8 +65,9 @@ class MonthContainer extends Component {
     
         ExpenseModel.create(newExpense).then((res) => {
             let expenses = this.state.expenses;
-            let newExpenses = expenses.push(res.data);
-            this.setState({ newExpenses })
+            // let newExpenses = 
+            expenses.push(res.data);
+            // this.setState({ newExpenses })
         });
     };
 
@@ -100,7 +111,7 @@ class MonthContainer extends Component {
                 return expense._id !== res.data._id;
             // });
         })
-        this.setState({ expenses: this.state.expenses });  // undefined
+        this.setState({ expenses: this.state.expenses });
     };
 
     render() {
@@ -118,6 +129,10 @@ class MonthContainer extends Component {
                         /> 
                         <CreateIncomeForm 
                             createIncome={this.createIncome}/>
+                        <Sum 
+                            values = {this.state.incomes} 
+                            title = "Income breakdown" 
+                        />
                     </section>
                 
                     <section className="right"> Expenses 
@@ -130,8 +145,17 @@ class MonthContainer extends Component {
                         />
                         <CreateExpenseForm 
                             createExpense={this.createExpense}/>
+                        <Sum 
+                            values = {this.state.expenses} 
+                            title = "Expense breakdown"    
+                        />
                     </section>
                 </div>
+                <section className="result">
+                    <ResultContainer
+                        incomes= {this.state.incomes}
+                        expenses= {this.state.expenses} />
+                </section>
             </>
         );
     }

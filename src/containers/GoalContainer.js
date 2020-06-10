@@ -14,21 +14,28 @@ class GoalContainer extends Component {
     };
 
     componentDidMount() {
-        this.fetchData();
+        this.fetchGoals();
+        this.fetchWish();
     };
 
     componentDidUpdate(prevProps, prevState) {
         if (this.state.goals !== prevState.goals) {
-            this.fetchData();
+            this.fetchGoals();
+        }
+        if (this.state.wishlist !== prevState.wishlist) {
+            this.fetchGoals();
         }
     };
 
-    fetchData = () => {
+    fetchGoals = () => {
         GoalModel.all().then((res) => {
             this.setState ({
                 goals: res.data.goals,
             });
         });
+    }
+
+    fetchWish = () => {
         WishModel.all().then((res) => {
             this.setState ({
                 wishlist: res.data.wishlist,
@@ -43,8 +50,9 @@ class GoalContainer extends Component {
         };
         GoalModel.create(newGoal).then((res) => {
             let goals = this.state.goals;
-            let newGoals = goals.push(res.data);
-            this.setState({ newGoals })
+            // let newGoals = 
+            goals.push(res.data);
+            // this.setState({ newGoals })
         });
     };
 
@@ -55,8 +63,9 @@ class GoalContainer extends Component {
         };
         WishModel.create(newWish).then((res) => {
             let wishlist = this.state.wishlist;
-            let newWishlist = wishlist.push(res.data);
-            this.setState({ newWishlist })
+            // let newWishlist = 
+            wishlist.push(res.data);
+            // this.setState({ newWishlist })
         });
     };
 

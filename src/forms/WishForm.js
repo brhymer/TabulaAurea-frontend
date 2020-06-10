@@ -45,7 +45,7 @@ class WishForm extends Component {
                         autoFocus={ this.props.autoFocus }
                         onChange={ this.onChange2 }
                         placeholder={ this.props.reason }
-                        type="textfield"
+                        type="text"
                         value={(this.state.reason) || ''}/>
                     <button type="submit" className="btn">{this.props.buttonName}</button>
                 </form>

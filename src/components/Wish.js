@@ -37,7 +37,7 @@ class Wish extends Component {
                     style={ this.state.formStyle }
                     autoFocus= { true }
                     buttonName="Update"
-                    updateGoal={this.props.updateWish}
+                    updateWish={this.props.updateWish}
                     toggleBodyForm={this.toggleBodyForm}
                 />
             </li>

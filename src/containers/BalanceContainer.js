@@ -5,6 +5,8 @@ import Assets from '../components/Assets';
 import Liabilities from '../components/Liabilities';
 import CreateAssetForm from '../forms/CreateAssetForm.js';
 import CreateLiabilityForm from '../forms/CreateLiabilityForm';
+import Sum from '../components/Sum2';
+import ResultContainer from './ResultContainer';
 
 class BalanceContainer extends Component {
 
@@ -14,21 +16,28 @@ class BalanceContainer extends Component {
     };
 
     componentDidMount() {
-        this.fetchData();
+        this.fetchAsset();
+        this.fetchLiab();
     };
 
     componentDidUpdate(prevProps, prevState) {
         if (this.state.assets !== prevState.assets) {
-            this.fetchData();
+            this.fetchAsset();
+        }
+        if (this.state.liabilities !== prevState.liabilities) {
+            this.fetchLiab();
         }
     };
 
-    fetchData = () => {
+    fetchAsset = () => {
         AssetModel.all().then((res) => {
             this.setState ({
                 assets: res.data.assets,
             });
         });
+    }
+
+    fetchLiab = () => {
         LiabilityModel.all().then((res) => {
             this.setState ({
                 liabilities: res.data.liabilities,
@@ -44,8 +53,9 @@ class BalanceContainer extends Component {
         };
         AssetModel.create(newAsset).then((res) => {
             let assets = this.state.assets;
-            let newAssets = assets.push(res.data);
-            this.setState({ newAssets })
+            // let newAssets = 
+            assets.push(res.data);
+            // this.setState({ newAssets })
         });
     }
 
@@ -57,8 +67,9 @@ class BalanceContainer extends Component {
         };
         LiabilityModel.create(newLiability).then((res) => {
             let liabilities = this.state.liabilities;
-            let newLiabilities = liabilities.push(res.data);
-            this.setState({ newLiabilities })
+            // let newLiabilities = 
+            liabilities.push(res.data);
+            // this.setState({ newLiabilities })
         });
     }
 
@@ -117,6 +128,10 @@ class BalanceContainer extends Component {
                     />
                     <CreateAssetForm
                         createAsset={this.createAsset}/>
+                    <Sum 
+                        values = {this.state.assets} 
+                        title = "Asset breakdown" 
+                    />                        
                     </section>
 
                     <section className="right">Liabilities
@@ -128,8 +143,15 @@ class BalanceContainer extends Component {
                     />
                     <CreateLiabilityForm
                         createLiability={this.createLiability} />
+                    <Sum 
+                        values = {this.state.liabilities} 
+                        title = "Liability breakdown" 
+                    />    
                     </section>
                 </div>
+                <ResultContainer
+                        assets= {this.state.assets}
+                        liabilities= {this.state.liabilities} />
             </>
         );
     }
