@@ -18,14 +18,14 @@ class GoalContainer extends Component {
         this.fetchWish();
     };
 
-    componentDidUpdate(prevProps, prevState) {
-        if (this.state.goals !== prevState.goals) {
-            this.fetchGoals();
-        }
-        if (this.state.wishlist !== prevState.wishlist) {
-            this.fetchGoals();
-        }
-    };
+    // componentDidUpdate(prevProps, prevState) {
+    //     if (this.state.goals !== prevState.goals) {
+    //         this.fetchGoals();
+    //     }
+    //     if (this.state.wishlist !== prevState.wishlist) {
+    //         this.fetchGoals();
+    //     }
+    // };
 
     fetchGoals = () => {
         GoalModel.all().then((res) => {
@@ -50,9 +50,8 @@ class GoalContainer extends Component {
         };
         GoalModel.create(newGoal).then((res) => {
             let goals = this.state.goals;
-            // let newGoals = 
             goals.push(res.data);
-            // this.setState({ newGoals })
+            this.fetchGoals();
         });
     };
 
@@ -63,9 +62,8 @@ class GoalContainer extends Component {
         };
         WishModel.create(newWish).then((res) => {
             let wishlist = this.state.wishlist;
-            // let newWishlist = 
             wishlist.push(res.data);
-            // this.setState({ newWishlist })
+            this.fetchWish();
         });
     };
 
@@ -78,7 +76,7 @@ class GoalContainer extends Component {
         .then((res) => {
             let goals = this.state.goals;
             goals.find(isUpdatedGoal).name = goalObj.name
-            this.setState({ goals: goals })
+            this.fetchGoals();
         });
     };
 
@@ -91,31 +89,31 @@ class GoalContainer extends Component {
         .then((res) => {
             let wishlist = this.state.wishlist;
             wishlist.find(isUpdatedWish).name = wishObj.name
-            this.setState({ wishlist: wishlist })
+            this.fetchWish();
         });
     };
 
     deleteGoal = (goal) => {
         GoalModel.delete(goal).then((res) => {
-            return goal._id !== res.data._id;
+            this.fetchGoals();
         });
-        this.setState({ goals: this.state.goals })
     };
 
     deleteWish = (wish) => {
         WishModel.delete(wish).then((res) => {
-            return wish._id !== res.data._id;
+            this.fetchWish();
         });
-        this.setState({ wishlist: this.state.wishlist })
     };
 
     render() {
         return (
             <>
                 <h1>Financial Goals and Wishlist</h1>
-                <div >
-                    <section><h3>Goals</h3>
-                        <p> something</p>
+                <div className="tb">
+                    <div className="top-blurb">words words</div>
+                    <section className="top"><h3>Goals</h3>
+                    <span className="entry">Goal</span>
+                    <span className="entry">To be achived by</span>
                         <Goals 
                             goals={this.state.goals}
                             updateGoal={this.updateGoal}
@@ -124,9 +122,10 @@ class GoalContainer extends Component {
                         <CreateGoalForm
                             createGoal={this.createGoal}/>
                     </section>
-
-                    <section ><h3>Wishlist</h3>
-                        <p> something else</p>
+                    <hr />
+                    <section className="bottom"><h3>Wishlist</h3>
+                    <span className="entry">Item</span>
+                    <span className="entry">Why I want this</span>
                         <Wishlist 
                             wishlist={this.state.wishlist}
                             updateWish={this.updateWish}
@@ -135,6 +134,7 @@ class GoalContainer extends Component {
                         <CreateWishForm
                             createWish={this.createWish}/>
                     </section>
+                    <div className="top-blurb">words words</div>
                 </div>
             </>
         );

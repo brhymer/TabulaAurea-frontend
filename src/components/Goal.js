@@ -4,23 +4,33 @@ import GoalForm from '../forms/GoalForm';
 class Goal extends Component {
     state = {
         formStyle: {display: 'none'},
-        bodyStyle: {},
+        bodyStyle: {display: 'table'},
     };
 
     toggleBodyForm = () => {
-        (this.state.formStyle.display === 'block')
-        ? this.setState({ formStyle: {display: 'none'}, bodyStyle: {display: 'block'} })
-        : this.setState({ formStyle: {display: 'block'}, bodyStyle: {display: 'none'} })
+        (this.state.formStyle.display === 'table')
+        ? this.setState({ formStyle: {display: 'none'}, bodyStyle: {display: 'table'} })
+        : this.setState({ formStyle: {display: 'table'}, bodyStyle: {display: 'none'} })
     };
 
     deleteclickedGoal = () => this.props.deleteGoal(this.props.goal);
 
     render() {
+        // let thisDate = this.props.goal.date.slice(0,7).split('-').reverse().join('/')
+        // // let phizDate = thisDate
+        // console.log(thisDate)
         return (
             <li>
-                <div style={this.state.bodyStyle}>
+                <div style={this.state.bodyStyle} className={`${true ? "listy" : ""} ${this.props.index%2===0 ? "greyitem" : ""}`}>
                     <span className="list-item">{this.props.goal.name}</span>
-                    <span className="list-item">{this.props.goal.date}</span>
+                    <span className="list-item">
+                    {/* {new Intl.DateTimeFormat("en-GB", {
+                        year: "numeric",
+                        month: "long",
+                        // day: "2-digit"
+                    }).format(this.props.goal.date)} */}
+                    {this.props.goal.date.slice(0,10).split('-').join('/')}
+                    </span>
                     <button
                     className="edit"
                     onClick={this.toggleBodyForm}>

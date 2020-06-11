@@ -3,10 +3,11 @@ import Liability from './Liability';
 
 class Liabilities extends Component {
     render() {
-    let liabList = this.props.liabilities.map((liability) => {
+    let liabList = this.props.liabilities.map((liability, index) => {
         return (
             <Liability
-                key={liability._id}
+                key={index}
+                index={index}
                 liability={liability}
                 updateLiability={this.props.updateLiability}
                 deleteLiability={this.props.deleteLiability}

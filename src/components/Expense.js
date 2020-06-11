@@ -4,13 +4,13 @@ import ExpenseForm from '../forms/ExpenseForm';
 class Expense extends Component {
     state = {
         formStyle: {display: 'none'},
-        bodyStyle: {},
+        bodyStyle: {display: 'table'},
     };
 
     toggleBodyForm = () => {
-        (this.state.formStyle.display ==='block')
-        ? this.setState({ formStyle: {display: 'none'}, bodyStyle: {display: 'block'} })
-        : this.setState({ formStyle: {display: 'block'}, bodyStyle: {display: 'none'} })
+        (this.state.formStyle.display === 'table')
+        ? this.setState({ formStyle: {display: 'none'}, bodyStyle: {display: 'table'} })
+        : this.setState({ formStyle: {display: 'table'}, bodyStyle: {display: 'none'} })
     };
 
     deleteClickedExpense = () => this.props.deleteExpense(this.props.expense);
@@ -18,7 +18,7 @@ class Expense extends Component {
     render() {
         return (
             <li>
-                <div style={this.state.bodyStyle}>
+                <div style={this.state.bodyStyle} className={`${true ? "listy" : ""} ${this.props.index%2===0 ? "greyitem" : ""}`}>
                     <span className="list-item">{this.props.expense.name}</span> 
                     <span className="list-item">{this.props.expense.amount} </span>
                         <button

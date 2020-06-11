@@ -12,6 +12,7 @@ class Sum extends Component {
         });
 
         let sum = amts.reduce(function(a, b){ return a + b; }, 0)
+        console.log("hey look at this right here")
         return (
             <div className="sum">
                 Total: ${ sum }

@@ -32,10 +32,12 @@ class Register extends Component {
 
     render() {
         return (
-            <div>
-                <h4>Register</h4>
-                <form onSubmit={this.handleSubmit}>
-                    <div className="form">
+            <div className="login">
+                <br/>
+                <h2 >Register</h2>
+                <br/>
+                <form onSubmit={this.handleSubmit} >
+                    <div className="form register">
                         <label htmlFor="name">Name</label>
                         <input
                             onChange={this.handleChange}
@@ -45,7 +47,8 @@ class Register extends Component {
                             value={this.state.name}
                         />
                     </div>
-                    <div className="form">
+                    <br/>
+                    <div className="form register">
                         <label htmlFor="email">Email</label>
                         <input
                             onChange={this.handleChange}
@@ -55,7 +58,8 @@ class Register extends Component {
                             value={this.state.email}
                         />
                     </div>
-                    <div className="form">
+                    <br/>
+                    <div className="form register">
                         <label htmlFor="password">Password</label>
                         <input 
                             onChange={this.handleChange}
@@ -65,7 +69,8 @@ class Register extends Component {
                             value={this.state.password}
                         />
                     </div>
-                    <div className="form">
+                    <br/>
+                    <div className="form register">
                     <label htmlFor="password2">Confirm Password</label>
                         <input 
                             onChange={this.handleChange}
@@ -75,7 +80,7 @@ class Register extends Component {
                             value={this.state.password2}
                         />
                     </div> 
-
+                    <br/>
                     <button type="submit">Register</button>
                 </form>                       
             </div>

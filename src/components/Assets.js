@@ -4,10 +4,11 @@ import Asset from './Asset';
 
 class Assets extends Component {
     render() {
-    let assetList = this.props.assets.map((asset) => {
+    let assetList = this.props.assets.map((asset, index) => {
         return (
             <Asset
-                key={asset._id}
+                key={index}
+                index={index}
                 asset={asset}
                 updateAsset={this.props.updateAsset}
                 deleteAsset={this.props.deleteAsset}

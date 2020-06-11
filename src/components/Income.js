@@ -4,13 +4,13 @@ import IncomeForm from '../forms/IncomeForm';
 class Income extends Component {
     state = {
         formStyle: {display: 'none'},
-        bodyStyle: {},
+        bodyStyle: {display: 'table'},
     };
 
     toggleBodyForm = () => {
-        (this.state.formStyle.display ==='block')
-        ? this.setState({ formStyle: {display: 'none'}, bodyStyle: {display: 'block'} })
-        : this.setState({ formStyle: {display: 'block'}, bodyStyle: {display: 'none'} })
+        (this.state.formStyle.display === 'table')
+        ? this.setState({ formStyle: {display: 'none'}, bodyStyle: {display: 'table'} })
+        : this.setState({ formStyle: {display: 'table'}, bodyStyle: {display: 'none'} })
     };
 
     deleteClickedIncome = () => this.props.deleteIncome(this.props.income);
@@ -18,7 +18,7 @@ class Income extends Component {
     render() {
         return (
             <li>
-                <div style={this.state.bodyStyle}>
+                <div style={this.state.bodyStyle} className={`${true ? "listy" : ""} ${this.props.index%2===0 ? "greyitem" : ""}`}>
                     <span className="list-item">{this.props.income.name}</span> 
                     <span className="list-item">{this.props.income.amount} </span>
                         <button

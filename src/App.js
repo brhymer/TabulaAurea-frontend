@@ -27,11 +27,24 @@ function App(props) {
     })
   }
 
+  const login = (event) => {
+    event.preventDefault()
+    props.history.push('./login')
+  }
+
+  const register = (event) => {
+    event.preventDefault()
+    props.history.push('./register')
+  }
+
   return (
     <div className="App">
       <Header 
         currentUser= { currentUser }
         logout={ logout }
+        login={ login }
+        register={ register }
+
       />
       <hr className="tophr" />
       <Routes

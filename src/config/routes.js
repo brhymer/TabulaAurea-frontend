@@ -8,8 +8,8 @@ import Login from '../Login';
 import Register from '../Register';
 
 export default (props) => (
-    <Switch> 
-        <section className="cont">
+    
+        <section className="cont"><Switch> 
             <Route path='/register' component={ Register }/>
             <Route path='/login' render={ (routeComponentProps) => {
                 return <Login
@@ -23,6 +23,6 @@ export default (props) => (
             <Route path='/goals' component = { GoalContainer } />
             <Route path='/invest' component = { InvestContainer } />
 
-        </section>
-    </Switch>
+            </Switch></section>
+   
 )

@@ -3,10 +3,11 @@ import Goal from './Goal';
 
 class Goals extends Component {
     render() {
-        let goalList = this.props.goals.map((goal) => {
+        let goalList = this.props.goals.map((goal, index) => {
         return (
             <Goal
-                key={goal._id}
+                key={index}
+                index={index}
                 goal={goal}
                 updateGoal={this.props.updateGoal}
                 deleteGoal={this.props.deleteGoal}

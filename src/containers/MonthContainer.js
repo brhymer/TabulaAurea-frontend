@@ -19,30 +19,23 @@ class MonthContainer extends Component {
         this.fetchExp();
     };
 
-    componentDidUpdate(prevProps, prevState) {
-        if (this.state.expenses !== prevState.expenses) {
-            this.fetchExp(); 
-          }
-        if (this.state.incomes !== prevState.incomes) {
-            this.fetchInc(); 
-          }
-    };
-
-    fetchInc = () => {
-        IncomeModel.all().then((res) => {
+    fetchInc = async () => {
+        await IncomeModel.all().then((res) => {
             this.setState ({
                 incomes: res.data.incomes,
+        });
+    })
+}
+
+    fetchExp = async () => {
+        await ExpenseModel.all().then((res) => {
+            this.setState ({
+                expenses: res.data.expenses,
+                incomes: this.state.incomes
             });
         });
     }
 
-    fetchExp = () => {
-        ExpenseModel.all().then((res) => {
-            this.setState ({
-                expenses: res.data.expenses,
-            });
-        });
-    }
 
     createIncome = (name, amount) => {
         let newIncome = {
@@ -51,9 +44,8 @@ class MonthContainer extends Component {
         };
         IncomeModel.create(newIncome).then((res) => {
             let incomes = this.state.incomes;
-            // let newIncomes = 
             incomes.push(res.data);
-            // this.setState({ newIncomes })
+            this.fetchInc();
         });
     };
 
@@ -65,9 +57,8 @@ class MonthContainer extends Component {
     
         ExpenseModel.create(newExpense).then((res) => {
             let expenses = this.state.expenses;
-            // let newExpenses = 
             expenses.push(res.data);
-            // this.setState({ newExpenses })
+            this.fetchExp();
         });
     };
 
@@ -80,7 +71,7 @@ class MonthContainer extends Component {
         .then((res) => {
             let incomes = this.state.incomes;
             incomes.find(isUpdatedIncome).name = incomeObj.name;
-            this.setState({ incomes: incomes });
+            this.fetchInc();
         });
     };
 
@@ -93,25 +84,20 @@ class MonthContainer extends Component {
         .then((res) => {
             let expenses = this.state.expenses;
             expenses.find(isUpdatedExpense).name = expenseObj.name;
-            this.setState({ expenses: expenses });
+            this.fetchExp();
         });
     };
 
     deleteIncome = (income) => {
         IncomeModel.delete(income).then((res) => {
-            return income._id !== res.data._id;
+            this.fetchInc();
         });
-        this.setState({ incomes: this.state.expenses });
     };
  
     deleteExpense = (expense) => {
         ExpenseModel.delete(expense).then((res) => {
-            // let expenses = this.state.expenses.filter(function(expense) {
-
-                return expense._id !== res.data._id;
-            // });
-        })
-        this.setState({ expenses: this.state.expenses });
+            this.fetchExp();
+        });
     };
 
     render() {
@@ -122,7 +108,8 @@ class MonthContainer extends Component {
                 <div className="lr">
                 
                     <section className="left"> <h3>Income Sources</h3>
-                        <p className="entry">Entry &nbsp;&nbsp;&nbsp;&nbsp;Cost</p>
+                    <span className="entry">Entry</span>
+                    <span className="entry">Cost</span>
                         <Incomes 
                             incomes={this.state.incomes}
                             updateIncome={this.updateIncome}
@@ -137,8 +124,8 @@ class MonthContainer extends Component {
                     </section>
                 
                     <section className="right"> <h3>Expenses</h3> 
-                        <p className="entry">Entry &nbsp;&nbsp;&nbsp;&nbsp;Cost</p>
-
+                    <span className="entry">Entry</span>
+                    <span className="entry">Cost</span>
                         <Expenses 
                             expenses={this.state.expenses}
                             updateExpense={this.updateExpense}
@@ -152,7 +139,7 @@ class MonthContainer extends Component {
                         />
                     </section>
                 </div>
-                <section className="result">
+                <section className="res-sec">
                     <ResultContainer
                         incomes= {this.state.incomes}
                         expenses= {this.state.expenses} />

@@ -1,13 +1,13 @@
 import axios from 'axios';
-require('dotenv').config()
+require('dotenv').config();
 
 const key = process.env.REACT_APP_API_KEY;
 
 const endPoint = `https://finnhub.io/api/v1/quote?symbol=`
 
 class InvestModel {
-    static quote = (code) => {
-        let request = axios.get(`${endPoint}${code}&token=${key}`)
+    static quote = () => {
+        let request = axios.get(`${endPoint}MSFT&token=${key}`)
         .catch((error) => {    
             if (error.response) {
             // Request made and server responded

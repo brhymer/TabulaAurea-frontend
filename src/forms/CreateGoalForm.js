@@ -41,6 +41,7 @@ class CreateGoalForm extends Component {
                         onChange={this.onInputChange2}
                         type="date" id="newItemDate"
                         value={this.state.date}
+                        required pattern="\d{4}-\d{2}-\d{2}"
                     />
                     <button type="submit" id="addGoal">Save</button>
                 </form>

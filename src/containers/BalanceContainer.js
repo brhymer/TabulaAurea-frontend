@@ -20,14 +20,14 @@ class BalanceContainer extends Component {
         this.fetchLiab();
     };
 
-    componentDidUpdate(prevProps, prevState) {
-        if (this.state.assets !== prevState.assets) {
-            this.fetchAsset();
-        }
-        if (this.state.liabilities !== prevState.liabilities) {
-            this.fetchLiab();
-        }
-    };
+    // componentDidUpdate(prevProps, prevState) {
+    //     if (this.state.assets !== prevState.assets) {
+    //         this.fetchAsset();
+    //     }
+    //     if (this.state.liabilities !== prevState.liabilities) {
+    //         this.fetchLiab();
+    //     }
+    // };
 
     fetchAsset = () => {
         AssetModel.all().then((res) => {
@@ -53,9 +53,8 @@ class BalanceContainer extends Component {
         };
         AssetModel.create(newAsset).then((res) => {
             let assets = this.state.assets;
-            // let newAssets = 
             assets.push(res.data);
-            // this.setState({ newAssets })
+            this.fetchAsset();
         });
     }
 
@@ -67,9 +66,8 @@ class BalanceContainer extends Component {
         };
         LiabilityModel.create(newLiability).then((res) => {
             let liabilities = this.state.liabilities;
-            // let newLiabilities = 
             liabilities.push(res.data);
-            // this.setState({ newLiabilities })
+            this.fetchLiab();
         });
     }
 
@@ -82,7 +80,7 @@ class BalanceContainer extends Component {
         .then((res) => {
             let assets = this.state.assets;
             assets.find(isUpdatedAsset).name = assetObj.name
-            this.setState({ assets: assets })
+            this.fetchAsset();
         });
     };
 
@@ -95,22 +93,20 @@ class BalanceContainer extends Component {
         .then((res) => {
             let liabilities = this.state.liabilities;
             liabilities.find(isUpdatedLiability).name = liabObj.name
-            this.setState({ liabilities: liabilities })
+            this.fetchLiab();
         });
     };
 
     deleteAsset = (asset) => {
         AssetModel.delete(asset).then((res) => {
-            return asset._id !== res.data._id;
+            this.fetchAsset();
         });
-        this.setState({ assets: this.state.assets });
     };
 
     deleteLiability = (liability) => {
         LiabilityModel.delete(liability).then((res) => {
-            return liability._id !== res.data._id;
+            this.fetchLiab();
         });
-        this.setState({ liabilities: this.state.liabilities });
     };
 
 
@@ -120,7 +116,9 @@ class BalanceContainer extends Component {
                 <h1>Assets & Liabilities Balance Sheet</h1>
                 <div className="lr">
                     <section className="left"><h3>Assets</h3>
-                    <p className="entry">Entry &nbsp;&nbsp;&nbsp;&nbsp;Value&nbsp;&nbsp;&nbsp;&nbsp;Interest Rate</p>
+                    <span className="entry">Entry</span>
+                    <span className="entry">Value</span>
+                    <span className="entry">Interest Rate</span>
                     <Assets 
                         assets={this.state.assets}
                         updateAsset={this.updateAsset}
@@ -135,7 +133,9 @@ class BalanceContainer extends Component {
                     </section>
 
                     <section className="right"><h3>Liabilities</h3>
-                    <p className="entry">Entry &nbsp;&nbsp;&nbsp;&nbsp;Value&nbsp;&nbsp;&nbsp;&nbsp;Interest Rate</p>
+                    <span className="entry">Entry</span>
+                    <span className="entry">Value</span>
+                    <span className="entry">Interest Rate</span>
                     <Liabilities
                         liabilities={this.state.liabilities}
                         updateLiability={this.updateLiability}
@@ -149,9 +149,11 @@ class BalanceContainer extends Component {
                     />    
                     </section>
                 </div>
-                <ResultContainer
-                        assets= {this.state.assets}
-                        liabilities= {this.state.liabilities} />
+                <section className="res-sec">
+                    <ResultContainer
+                            assets= {this.state.assets}
+                            liabilities= {this.state.liabilities} />
+                </section>
             </>
         );
     }

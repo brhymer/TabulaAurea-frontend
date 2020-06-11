@@ -24,8 +24,8 @@ class InvestContainer extends Component {
         // });
     }
 
-    fetchStock = (code) => {
-        InvestModel.quote(code).then((res) => {
+    fetchStock = () => {
+        InvestModel.quote().then((res) => {
             console.log(res.data)
             alert(res.data)
             // this.setState({
@@ -41,15 +41,18 @@ class InvestContainer extends Component {
             <div>
                 <h1>Investment Tracker</h1>
 
-                <h2>Gold spot price</h2>
-                <button onClick={this.fetchGold} className="btn">Quote</button>
-
-                <h2>Silver spot price</h2>
-                <button onClick={this.fetchSilver} className="btn">Quote</button>
-
+                <h2 style={{display: "inline"}}>Gold spot price</h2> &nbsp;
+                <button style={{display: "inline"}} onClick={this.fetchGold} className="btn">Quote</button>
+                <br/>
+                <br/>
+                <br/>
+                <h2 style={{display: "inline"}}>Silver spot price</h2> &nbsp;
+                <button style={{display: "inline"}} onClick={this.fetchSilver} className="btn">Quote</button>
+                <br/>
+                <br/>
                 <h2>Enter a stock code to see an up-to-the-minute quote</h2>
                 <form onSubmit={ this.fetchStock } >
-                    <input 
+                    <input className="long-input"
                         placeholder="Enter a stock code here (ex. AAPL for Apple)"
                         type="text"
                         id = "code"
@@ -57,6 +60,8 @@ class InvestContainer extends Component {
                     />
                     <button type="submit" className="btn">Quote</button>
                     <h5>{ this.state.quote }</h5>
+                    <br/>
+                    <br/>
                 </form>
 
             </div>

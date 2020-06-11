@@ -4,10 +4,11 @@ import Expense from './Expense';
 
 class Expenses extends Component {
     render(){
-    let expList = this.props.expenses.map((expense) => {
+    let expList = this.props.expenses.map((expense, index) => {
         return (
             <Expense 
-                key={expense._id}
+                key={index}
+                index={index}
                 expense={expense}
                 updateExpense={this.props.updateExpense}
                 deleteExpense={this.props.deleteExpense}
