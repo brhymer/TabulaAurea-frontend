@@ -114,7 +114,7 @@ class GoalContainer extends Component {
             <>
                 <h1>Financial Goals and Wishlist</h1>
                 <div >
-                    <section>Goals
+                    <section><h3>Goals</h3>
                         <p> something</p>
                         <Goals 
                             goals={this.state.goals}
@@ -125,7 +125,7 @@ class GoalContainer extends Component {
                             createGoal={this.createGoal}/>
                     </section>
 
-                    <section >Wishlist
+                    <section ><h3>Wishlist</h3>
                         <p> something else</p>
                         <Wishlist 
                             wishlist={this.state.wishlist}

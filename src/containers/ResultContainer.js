@@ -10,10 +10,18 @@ class ResultContainer extends Component {
             return ele.amount;
         });
         let incSum = incAmts.reduce(function(c, d){ return c + d; }, 0)
+        let result = `${incSum - expSum}`
+        let message
+        if (result<0) {
+            message = "You need to cut back"
+        } else {
+            message = "Looking good"
+        }
 
         return (
-            <div>
-                Your monthly balance= ${incSum - expSum}
+            <div className="result">
+                Your monthly balance= ${result}
+                <p className={result<0 ? "neg" : "pos" }>{ message }</p>
             </div>
         );
     }

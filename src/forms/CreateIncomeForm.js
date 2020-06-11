@@ -37,6 +37,7 @@ class CreateIncomeForm extends Component {
                         onChange={this.onInputChange}
                         type="text" id="newItemDescription"
                         value={this.state.name}
+                        placeholder="add new item"
                     />
                     <input
                         onChange={this.onInputChange2}

@@ -6,7 +6,7 @@ import Liabilities from '../components/Liabilities';
 import CreateAssetForm from '../forms/CreateAssetForm.js';
 import CreateLiabilityForm from '../forms/CreateLiabilityForm';
 import Sum from '../components/Sum2';
-import ResultContainer from './ResultContainer';
+import ResultContainer from './ResultContainer2';
 
 class BalanceContainer extends Component {
 
@@ -119,7 +119,7 @@ class BalanceContainer extends Component {
             <>
                 <h1>Assets & Liabilities Balance Sheet</h1>
                 <div className="lr">
-                    <section className="left">Assets
+                    <section className="left"><h3>Assets</h3>
                     <p className="entry">Entry &nbsp;&nbsp;&nbsp;&nbsp;Value&nbsp;&nbsp;&nbsp;&nbsp;Interest Rate</p>
                     <Assets 
                         assets={this.state.assets}
@@ -134,7 +134,7 @@ class BalanceContainer extends Component {
                     />                        
                     </section>
 
-                    <section className="right">Liabilities
+                    <section className="right"><h3>Liabilities</h3>
                     <p className="entry">Entry &nbsp;&nbsp;&nbsp;&nbsp;Value&nbsp;&nbsp;&nbsp;&nbsp;Interest Rate</p>
                     <Liabilities
                         liabilities={this.state.liabilities}

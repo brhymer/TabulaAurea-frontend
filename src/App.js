@@ -33,6 +33,7 @@ function App(props) {
         currentUser= { currentUser }
         logout={ logout }
       />
+      <hr className="tophr" />
       <Routes
         currentUser={ currentUser }
         storeUser={ storeUser }

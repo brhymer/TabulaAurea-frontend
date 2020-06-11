@@ -118,9 +118,10 @@ class MonthContainer extends Component {
         return (
             <>
                 <h1>Monthly Budget</h1>
+
                 <div className="lr">
                 
-                    <section className="left"> Income Sources
+                    <section className="left"> <h3>Income Sources</h3>
                         <p className="entry">Entry &nbsp;&nbsp;&nbsp;&nbsp;Cost</p>
                         <Incomes 
                             incomes={this.state.incomes}
@@ -135,7 +136,7 @@ class MonthContainer extends Component {
                         />
                     </section>
                 
-                    <section className="right"> Expenses 
+                    <section className="right"> <h3>Expenses</h3> 
                         <p className="entry">Entry &nbsp;&nbsp;&nbsp;&nbsp;Cost</p>
 
                         <Expenses 

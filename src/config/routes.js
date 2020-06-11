@@ -9,7 +9,7 @@ import Register from '../Register';
 
 export default (props) => (
     <Switch> 
-        {/* <section className="cont"> */}
+        <section className="cont">
             <Route path='/register' component={ Register }/>
             <Route path='/login' render={ (routeComponentProps) => {
                 return <Login
@@ -22,6 +22,7 @@ export default (props) => (
             <Route path='/asli' component = { BalanceContainer } />
             <Route path='/goals' component = { GoalContainer } />
             <Route path='/invest' component = { InvestContainer } />
-        {/* </section> */}
+
+        </section>
     </Switch>
 )

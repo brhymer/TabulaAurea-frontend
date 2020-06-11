@@ -15,11 +15,16 @@ class Chart extends Component {
                     label:'Amount',
                     data: this.props.data,
                     backgroundColor: [
-                        "black",
-                        "red",
-                        "green",
-                        "orange",
-                        "blue",
+                        "#70C4A0", //teal
+                        "#96C684", //light green
+                        "#46697A", //slate
+                        "#7A3427", //red-brown
+                        "#427A2D", //green
+                        "#7A1A49", //magenta
+                        "##7A6026", //brownish
+                        "#14367A", // dark blue
+                        "#637A2D", // olive
+                        "gold"
                     ],
                     
                 }
