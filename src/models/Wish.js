@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 
-const endPoint = `http://localhost:3001/wishlist`
+const endPoint = (`https://murmuring-chamber-41495.herokuapp.com/ || http://localhost:3001/wishlist`)
 
 class WishModel {
     static all = () => {
