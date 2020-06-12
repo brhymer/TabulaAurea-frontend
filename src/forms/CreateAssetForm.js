@@ -4,12 +4,14 @@ class CreateAssetForm extends Component {
     state = {
         name: '',
         value: '',
-        intRate: ''
+        intRate: '',
+        // userId: ''
     }
 
     onInputChange = (event) => {
         this.setState({
-            name: event.target.value
+            name: event.target.value,
+            // userId: userId
         });
     };
 
@@ -52,7 +54,7 @@ class CreateAssetForm extends Component {
                     <input
                         onChange={this.onInputChange3}
                         type="number" id="newItemRate"
-                        value={this.state.amount}
+                        value={this.state.intRate}
                     />
                     <button type="submit" id="addAsset" >Save</button>
                 </form>  
