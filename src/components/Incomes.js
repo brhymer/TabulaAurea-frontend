@@ -1,13 +1,29 @@
-import React, { Component } from 'react';
+import React, {Component} from 'react';
+import Income from './Income';
+
 
 class Incomes extends Component {
-    render() {
+    render(){
+    let incList = this.props.incomes.map((income, index) => {
         return (
-            <div>
-                Incomes
-            </div>
+            <Income 
+                key={index}
+                index={index}
+                income={income}
+                updateIncome={this.props.updateIncome}
+                deleteIncome={this.props.deleteIncome}
+            />
         );
-    }
+    });
+
+
+    return (
+        <>
+            { incList }
+        </>
+
+    );
+}
 }
 
 export default Incomes;

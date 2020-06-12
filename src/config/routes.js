@@ -8,10 +8,11 @@ import Login from '../Login';
 import Register from '../Register';
 
 export default (props) => (
-    <Switch>
-        <section className="cont">
-            <Route path='register' component={ Register }/>
-            <Route path='login' render={ (routeComponentProps) => {
+    
+        <section className="cont"><Switch> 
+            <Route path='/' component ={ Register }/>
+            <Route path='/register' component={ Register }/>
+            <Route path='/login' render={ (routeComponentProps) => {
                 return <Login
                     { ...routeComponentProps }
                     currentUser={ props.currentUser }
@@ -22,6 +23,7 @@ export default (props) => (
             <Route path='/asli' component = { BalanceContainer } />
             <Route path='/goals' component = { GoalContainer } />
             <Route path='/invest' component = { InvestContainer } />
-        </section>
-    </Switch>
+
+            </Switch></section>
+   
 )

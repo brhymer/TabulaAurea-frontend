@@ -2,9 +2,24 @@
    Entire
 ========= */ 
 
-*{
-  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif ;
-  background-color: slategray;
+body{
+  /* font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif ; */
+  /* font-family: Arial, Helvetica, sans-serif;  */
+  /* font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif; */
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url('./cash.jpg');
+  background-size: 100%;
+}
+
+.login {
+  text-align: center;
+  min-height: 50%;
+  min-height: 300px;
+}
+
+.register {
+  text-align: left;
+  padding-left: 35%;
 }
 
 /* =========
@@ -13,33 +28,272 @@
 
 h1 {
   text-align: center;
+  background: rgb(237, 243, 235); 
+  margin: 0 30% 1% 30%;
 }
 
+nav {
+  margin: 0;
+  padding: 0;
+}
 .navbar{
   list-style: none;
   display: flex;
   justify-content: space-around;
   text-align: center;
+  background: rgb(237, 243, 235); 
+  margin: 0 5%;
+  padding: 20px 0 0 0;
+  border-radius: 15px 15px 0 0;
 }
 
 .navbtn{
-  border: 1px solid black;
+  border: 5px outset rgb(139, 155, 139);
+  border-bottom: none;
+  padding: 0 5px;
   display: inline-flex;
   float: left;
   margin: 0 40px;
   font-size: 20px;
+  font-weight: bold;
   align-items: center;
+  border-radius: 15% 15% 0 0;
+  background: rgb(142, 158, 142);
+  color: rgb(237, 243, 235);
+  text-shadow: 1.5px 1.5px #6d6d6d;
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+
+.tophr{
+  width: 90%;
+	border-top: 3px solid #3c5c44;
+  border-bottom: 1px solid rgb(161, 160, 160);
+  margin: 0 auto;
+}
+
+
+#project-title {
+  font-size: 40px;
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  text-shadow: 1.5px 1.5px #6d6d6d;
+  background: rgb(142, 158, 142);
+  color: rgb(237, 243, 235);
+}
+
+#logout {
+  position: absolute;
+  right: 2%;
+  top: 2%;
+  border-radius: 5%;
+  background-color: dimgray;
+  color: whitesmoke;
+  font-size: 14px;
+  padding: 5px;
+}
+
+#login {
+  position: absolute;
+  /* float: right; */
+  right: 18%;
+  top: 2%;
+  border-radius: 5%;
+  background-color: dimgray;
+  color: whitesmoke;
+  font-size: 14px;
+  padding: 5px;
+}
+
+#register {
+  position: absolute;
+  /* float: right; */
+  right: 10%;
+  top: 2%;
+  border-radius: 5%;
+  background-color: dimgray;
+  color: whitesmoke;
+  font-size: 14px;
+  padding: 5px;
 }
 
 /* =========
    Body
 ========= */
 
-/* .cont{     ----NOT FUNCTIONING
-  background: whitesmoke;  
-  margin: 0 15%;
-} */
+h3 {
+  text-align: center;
+  text-decoration: underline;
+}
 
+.cont{    
+  background: rgb(237, 243, 235);  
+  /* box-shadow: 0 0 10px 5px rgb(237, 243, 235); */
+  margin: 0 5%;
+  border-radius: 0 0 5% 5%;
+}
+
+.entry {
+  width: 110px;
+  display: table-cell;
+}
+li {
+  list-style: none;
+}
+
+.listy {
+    height: 20px;
+}
+
+.list-item {
+  /* box-sizing: border-box; */
+  padding: 2px 15px 0 0;
+  margin: 10px 0;
+  font-size: 16px;
+  width: 100px;
+  display: table-cell;
+  text-align: left;
+}
+
+.greyitem {
+  background: rgb(89, 94, 89)
+}
+
+.edit {
+  border: 1px solid black;
+  background-color: #5C786C; 
+  font-size: 14px;
+  border-radius: 10%;
+  display: table-cell;
+  text-align: right;
+  cursor: pointer;
+}
+
+.remove {
+  border: 1px solid black;
+  background-color: rgb(134, 90, 90);
+  font-size: 14px; 
+  border-radius: 10%;
+  display: table-cell;
+  text-align: right;
+  cursor: pointer;
+}
+
+.btn {
+  border: none;
+  border-radius: 2px;
+  outline: none;
+  padding: 5px;
+  color: #fff;
+  text-transform: uppercase;
+  transition: all 0.3s;
+  font-size: 0.8em;
+  text-align: center;
+  background-color: #444;
+  cursor: pointer;
+}
+
+.lr {
+  display: grid;
+  margin: 0 2% 15px 2%;
+  grid-template-columns: repeat(2, 1fr);
+  grid-gap: 1rem;
+}
+
+.left, .right{
+  padding: 0 2% 3% 2%;
+  border: 1px black solid;
+  background-color: rgb(169, 184, 173);
+  box-shadow: 
+    0 1px 1px rgba(0,0,0,0.15),
+    0 10px 0 -5px rgb(169, 184, 173),
+    0 10px 1px -4px rgba(0,0,0,0.5),
+    0 20px 0 -10px rgb(169, 184, 173),
+    0 20px 1px -9px rgba(0,0,0,0.5);
+}
+
+.tb {
+  margin: 0 2% 15px 2%;
+  padding-bottom: 2%;
+}
+.top-blurb {
+  padding: 0 2%;
+  /* float: left; */
+  width: 20%;
+}
+
+.top {
+  padding: 0 2%;
+  /* float: left; */
+  width: 60%;
+  border: 1px black solid;
+  background-color: rgb(169, 184, 173);
+  box-shadow: 
+  0 1px 1px rgba(0,0,0,0.15),
+  0 10px 0 -5px rgb(169, 184, 173),
+  0 10px 1px -4px rgba(0,0,0,0.5),
+  0 20px 0 -10px rgb(169, 184, 173),
+  0 20px 1px -9px rgba(0,0,0,0.5);
+}
+
+.bottom-blurb {
+  padding: 0 2%;
+  /* float: left; */
+  width: 20%;
+}
+
+.bottom {
+  padding: 0 2%;
+  /* float: left; */
+  width: 60%;
+  border: 1px black solid;
+  background-color: rgb(169, 184, 173);
+  margin-bottom: 5%;
+  box-shadow: 
+  0 1px 1px rgba(0,0,0,0.15),
+  0 10px 0 -5px rgb(169, 184, 173),
+  0 10px 1px -4px rgba(0,0,0,0.5),
+  0 20px 0 -10px rgb(169, 184, 173),
+  0 20px 1px -9px rgba(0,0,0,0.5);
+}
+
+
+input {
+  width: 100px;
+  background: inherit;
+  border: none;
+  border-bottom: 1px solid black;
+}
+
+.long-input {
+  width: 300px;
+}
+
+.sum {
+  margin-top: 40px;
+}
+
+.res-sec {
+  padding: 20px 0;
+}
+
+.result {
+  text-align: center;
+  font-size: 30px;
+  padding: 10px 0;
+  margin: 0 20%;
+  background: rgb(178, 180, 182);
+  border: 1px dashed rgb(53, 75, 66);
+	box-shadow: 0 0 0 1px rgb(53, 75, 66), 0 0 0 3px rgb(178, 180, 182), 0 0 0 6px rgb(53, 75, 66), 0 0 2px 8px rgb(178, 180, 182);
+}
+
+.pos {
+  font-size: 30px;
+  color: green;
+}
+
+.neg {
+  font-size: 30px;
+  color: red;
+}
 
 
 /* =========
@@ -49,42 +303,3 @@ h1 {
 footer {
   text-align: center;
 }
-
-/* .App {
-  text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-} */

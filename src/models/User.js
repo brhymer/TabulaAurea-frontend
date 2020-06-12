@@ -1,4 +1,4 @@
-const REACT_APP_API_URL = "http://localhost:3001/"
+const REACT_APP_API_URL = "http://localhost:3001"
 
 export default class UserModel {
     static create(data) {
@@ -7,7 +7,8 @@ export default class UserModel {
             headers: {
                 "Content-Type": "application/json"
             },
-            body: JSON.stringify(data)
+            body: JSON.stringify(data),
+            // 
         }).then(res => res.json())
     }
 

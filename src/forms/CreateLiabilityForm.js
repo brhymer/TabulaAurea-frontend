@@ -1,11 +1,10 @@
 import React, { Component } from 'react';
 
-
-
-class CreateExpenseForm extends Component {
+class CreateLiabilityForm extends Component {
     state = {
         name: '',
-        amount: '',
+        value: '',
+        intRate: ''
     }
 
     onInputChange = (event) => {
@@ -13,27 +12,33 @@ class CreateExpenseForm extends Component {
             name: event.target.value
         });
     };
-    
+
     onInputChange2 = (event) => {
         this.setState({
-            amount: event.target.value
+            value: event.target.value
         });
-    }
+    };
+
+    onInputChange3 = (event) => {
+        this.setState({
+            intRate: event.target.value
+        });
+    };
 
     onFormSubmit = (event) => {
         event.preventDefault();
-        let expense = this.state; 
-        this.props.createExpense(expense);
-        this.setState({ 
-            name: '', amount: ''
+        let liability = this.state;
+        this.props.createLiability(liability);
+        this.setState({
+            name: '', value: '', intRate: ''
         });
     };
 
     render() {
         return (
             <>
-                <form onSubmit={this.onFormSubmit} id="expform">
-                    <input
+                <form onSubmit={this.onFormSubmit} id="liabform">
+                <input
                         onChange={this.onInputChange}
                         type="text" id="newItemDescription"
                         value={this.state.name}
@@ -42,13 +47,18 @@ class CreateExpenseForm extends Component {
                     <input
                         onChange={this.onInputChange2}
                         type="number" id="newItemAmount"
+                        value={this.state.value}
+                    />
+                    <input
+                        onChange={this.onInputChange3}
+                        type="number" id="newItemRate"
                         value={this.state.amount}
                     />
-                    <button type="submit" id="addExpense" >Save</button>
-                </form>
+                    <button type="submit" id="addLiability">Save</button>
+                </form> 
             </>
         );
     }
 }
 
-export default CreateExpenseForm;
+export default CreateLiabilityForm;

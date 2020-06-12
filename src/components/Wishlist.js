@@ -1,11 +1,26 @@
-import React from 'react';
+import React, { Component } from 'react';
+import Wish from './Wish';
 
-const Wishlist = () => {
+class Wishlist extends Component {
+    render() {
+        let wishList = this.props.wishlist.map((wish, index) => {
+        return (
+            <Wish
+                key={index}
+                index={index}
+                wish={wish}
+                updateWish={this.props.updateWish}
+                deleteWish={this.props.deleteWish}
+            />
+        );
+    });
+
     return (
-        <div>
-            Wishlist
-        </div>
+        <>
+            { wishList }
+        </>
     );
+    }
 }
 
 export default Wishlist;

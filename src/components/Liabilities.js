@@ -1,11 +1,26 @@
-import React from 'react';
+import React, { Component } from 'react';
+import Liability from './Liability';
 
-const Liabilities = () => {
+class Liabilities extends Component {
+    render() {
+    let liabList = this.props.liabilities.map((liability, index) => {
+        return (
+            <Liability
+                key={index}
+                index={index}
+                liability={liability}
+                updateLiability={this.props.updateLiability}
+                deleteLiability={this.props.deleteLiability}
+            />
+        );
+    });
+
     return (
-        <div>
-            Liabilities
-        </div>
+        <>
+            { liabList }
+        </>
     );
+    }
 }
 
 export default Liabilities;

@@ -1,11 +1,28 @@
-import React from 'react';
+import React, { Component } from 'react';
+import Asset from './Asset';
 
-const Assets = () => {
+
+class Assets extends Component {
+    render() {
+    let assetList = this.props.assets.map((asset, index) => {
+        return (
+            <Asset
+                key={index}
+                index={index}
+                asset={asset}
+                updateAsset={this.props.updateAsset}
+                deleteAsset={this.props.deleteAsset}
+            />
+        );
+    });
+
     return (
-        <div>
-            Assets
-        </div>
+        <>
+            { assetList }
+        </>
+
     );
+    }
 }
 
 export default Assets;
