@@ -4,60 +4,60 @@ import axios from 'axios';
 require('dotenv').config();
 const request = require('request');
 
-
-
-const key = process.env.REACT_APP_API_KEY;
+const key = process.env.REACT_APP_API_KEY2;
 
 const endPoint = `https://finnhub.io/api/v1/quote?symbol=`
+const endPoint2 = `https://finnhub.io/api/v1/stock/profile2?symbol=`
 
 class InvestContainer extends Component {
     state= {
-        quote: ''
+        quote: '',
+        name: '',
+        code: '',
+        gold: '',
+        silver: ''
     }
+
+    onInputChange = (event) => {
+        event.preventDefault()
+        this.setState({
+            code: event.target.value,
+        });
+    };
+
 
     fetchGold = () => {
-        // InvestModel.quote(code).then((res) => {
-        //         // this.setState ({
-        //         //     gold: res.data,
-        //         return res.data
-        //     // });
-        // });
-    }
+        InvestModel.gold().then((res) => {
+            this.setState ({
 
-    fetchSilver = () => {
-        // InvestModel.quote(code).then((res) => {
-        //     // this.setState ({
-        //         // silver: res.data,
-        //     // });
-        //     return res.data
-        // });
-    }
-
-    fetchStock = () => {
-        request('https://finnhub.io/api/v1/quote?symbol=AAPL&token=brgi807rh5r8gtveqchg', { json: true }, (err, res, body) => {
-            if (err) { return console.log(err); }
-            console.log(body.url);
-            console.log(body.explanation);
+                gold: res.data.gold,
+            });
         });
     }
-        // let request = axios.get(`${endPoint}MSFT&token=${key}`)
-        // .catch((error) => {    
-        //     if (error.response) {
-        //     // Request made and server responded
-        //     console.log(error.response.data);
-        //     console.log(error.response.status);
-        //     console.log(error.response.headers);
-        //     } else if (error.request) {
-        //     // The request was made but no response was received
-        //     console.log(error.request);
-        //     } else {
-        //     // Something happened in setting up the request that triggered an Error
-        //     console.log('Error', error.message);
-        //     }
-        
-        // });
-        // return request;
-        
+
+
+    fetchSilver = () => {
+        InvestModel.silver().then((res) => {
+            this.setState ({
+                silver: res.data.silver,
+            });
+        });
+    }
+
+    fetchStock = (code, event) => {
+        event.preventDefault()
+        request(`${endPoint}${code}&token=${key}`, { json: true }, (err, res, body) => {
+            this.setState({
+                quote: res.body.c
+            })
+        })
+        request(`${endPoint2}${code}&token=${key}`, { json: true }, (err, res, body) => {
+            this.setState({
+                name: res.body.name
+                })
+            });
+        }
+    
         
         
         // InvestModel.quote().then((res) => {
@@ -78,23 +78,30 @@ class InvestContainer extends Component {
 
                 <h2 style={{display: "inline"}}>Gold spot price</h2> &nbsp;
                 <button style={{display: "inline"}} onClick={this.fetchGold} className="btn">Quote</button>
-                <br/>
+                <h5>Gold -- { this.state.gold }</h5>
                 <br/>
                 <br/>
                 <h2 style={{display: "inline"}}>Silver spot price</h2> &nbsp;
                 <button style={{display: "inline"}} onClick={this.fetchSilver} className="btn">Quote</button>
-                <br/>
+                <h5>Silver -- { this.state.silver }</h5>
                 <br/>
                 <h2>Enter a stock code to see an up-to-the-minute quote</h2>
-                <form onSubmit={ this.fetchStock }  >
+                <form 
+                    onSubmit={(e) => this.fetchStock(this.state.code, e)}
+                >
                     <input className="long-input"
                         placeholder="Enter a stock code here (ex. AAPL for Apple)"
                         type="text"
                         id = "code"
-                        // value={ code }
+                        onChange= { this.onInputChange }
+                        value={ this.state.code }
                     />
-                    <button type="submit" className="btn">Quote</button>
-                    <h5>{ this.state.quote }</h5>
+                    <button 
+                        type="submit" 
+                        // onClick = { this.fetchStock }
+                        className="btn">Quote
+                    </button>
+                    <h5>{ this.state.name } -- { this.state.quote }</h5>
                     <br/>
                     <br/>
                 </form>

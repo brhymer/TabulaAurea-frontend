@@ -18,14 +18,6 @@ class GoalContainer extends Component {
         this.fetchWish();
     };
 
-    // componentDidUpdate(prevProps, prevState) {
-    //     if (this.state.goals !== prevState.goals) {
-    //         this.fetchGoals();
-    //     }
-    //     if (this.state.wishlist !== prevState.wishlist) {
-    //         this.fetchGoals();
-    //     }
-    // };
 
     fetchGoals = () => {
         GoalModel.all().then((res) => {
@@ -110,7 +102,7 @@ class GoalContainer extends Component {
             <>
                 <h1>Financial Goals and Wishlist</h1>
                 <div className="tb">
-                    <div className="top-blurb">words words</div>
+                    <div className="top-blurb">What are your financial goals? Don't let your dreams be dreams! Do you want to save up a certain amount?  Pay off a car? Get debt-free? Take some time to set down specific goals along with concrete timeframes for achieving them.</div>
                     <section className="top"><h3>Goals</h3>
                     <span className="entry">Goal</span>
                     <span className="entry">To be achived by</span>
@@ -134,7 +126,7 @@ class GoalContainer extends Component {
                         <CreateWishForm
                             createWish={this.createWish}/>
                     </section>
-                    <div className="top-blurb">words words</div>
+                    <div className="bottom-blurb">What do you want out of life? Think about the things you want to attain, whether material or otherwise, and write them down along with why you want them. Don't waste your energy striving for things needlessly.</div>
                 </div>
             </>
         );

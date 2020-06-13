@@ -1,28 +1,17 @@
 import axios from 'axios';
-require('dotenv').config();
 
-const key = process.env.REACT_APP_API_KEY;
+const AU = 'http://localhost:3001/gold'
 
-const endPoint = `https://finnhub.io/api/v1/quote?symbol=`
+const AG = 'http://localhost:3001/silver'
 
 class InvestModel {
-    static quote = () => {
-        let request = axios.get(`${endPoint}MSFT&token=${key}`)
-        .catch((error) => {    
-            if (error.response) {
-            // Request made and server responded
-            console.log(error.response.data);
-            console.log(error.response.status);
-            console.log(error.response.headers);
-          } else if (error.request) {
-            // The request was made but no response was received
-            console.log(error.request);
-          } else {
-            // Something happened in setting up the request that triggered an Error
-            console.log('Error', error.message);
-          }
-      
-        });
+    static gold = () => {
+        let request = axios.get(`${AU}`)
+        return request;
+    };
+
+    static silver = () => {
+        let request = axios.get(`${AG}`)
         return request;
     };
 }

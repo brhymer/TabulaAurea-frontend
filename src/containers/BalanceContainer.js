@@ -20,15 +20,6 @@ class BalanceContainer extends Component {
         this.fetchLiab();
     };
 
-    // componentDidUpdate(prevProps, prevState) {
-    //     if (this.state.assets !== prevState.assets) {
-    //         this.fetchAsset();
-    //     }
-    //     if (this.state.liabilities !== prevState.liabilities) {
-    //         this.fetchLiab();
-    //     }
-    // };
-
     fetchAsset = () => {
         AssetModel.all().then((res) => {
             this.setState ({
