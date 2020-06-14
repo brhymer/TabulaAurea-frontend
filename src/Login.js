@@ -16,13 +16,14 @@ class Login extends Component {
     handleSubmit = (event) => {
         event.preventDefault()
         UserModel.login(this.state)
-        .then(credentials => {
-            // console.log(credentials)  /////////
-            if (!credentials.data) {
+        .then(data => {
+            console.log(data)  /////////
+            if (!data.data) {
+                console.log("something happened")
                 return false
             }
-            this.props.storeUser(credentials.data)
-            this.props.history.push('/profile')
+            this.props.storeUser(data.data)
+            this.props.history.push('/month')
         })
         .catch(err => console.log(err))
 

@@ -8,17 +8,17 @@ export default class UserModel {
                 "Content-Type": "application/json"
             },
             body: JSON.stringify(data),
-            // 
+            
         }).then(res => res.json())
     }
 
     static login(credentials) {
         return fetch(`${REACT_APP_API_URL}/auth/login`, {
             method: "POST",
-            credentials: "include",
             headers: {
                 "Content-Type": "application/json"
             },
+            credentials: "include",
             body: JSON.stringify(credentials)
         }).then(res => res.json())
     }

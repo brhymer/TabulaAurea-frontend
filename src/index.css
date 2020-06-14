@@ -142,7 +142,6 @@ li {
 }
 
 .list-item {
-  /* box-sizing: border-box; */
   padding: 2px 15px 0 0;
   margin: 10px 0;
   font-size: 16px;
@@ -189,6 +188,23 @@ li {
   cursor: pointer;
 }
 
+.gol {
+  background-color: rgb(245, 207, 37);
+  color: orangered;
+  border: 1px outset orange;
+}
+.gol:hover{
+  box-shadow: 0 0 20px rgb(245, 207, 37);
+}
+.sil {
+  background-color: rgb(175, 175, 175);
+  color: rgb(24, 14, 165);
+  border: 1px outset rgb(67, 89, 102)
+}
+.sil:hover{
+  box-shadow: 0 0 20px rgb(175, 175, 175);
+}
+
 .lr {
   display: grid;
   margin: 0 2% 15px 2%;
@@ -210,7 +226,7 @@ li {
 
 .tb {
   margin: 0 2% 15px 2%;
-  /* max-width: 85%; */
+  /* max-width: 90%; */
   padding-bottom: 2%;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;

@@ -4,7 +4,7 @@ import Header from './components/Header';
 import Routes from './config/routes';
 import Footer from './components/Footer';
 import UserModel from './models/User';
-import './App.css';
+import './index.css';
 
 function App(props) {
 
@@ -12,6 +12,7 @@ function App(props) {
     localStorage.getItem('userid'))
 
   const storeUser = (userId) => {
+    // setCurrentUser({ currentUser: userId })
     setCurrentUser({ currentUser: userId })
     localStorage.setItem('userid', userId)
   }
@@ -22,7 +23,8 @@ function App(props) {
     UserModel.logout()
     .then(res => {
       console.log(res)
-      setCurrentUser({ currentUser: null })
+      // setCurrentUser({ currentUser: null })
+      setCurrentUser(null)
       props.history.push('./login')
     })
   }

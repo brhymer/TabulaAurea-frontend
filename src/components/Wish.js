@@ -28,7 +28,7 @@ class Wish extends Component {
                     </button>
                     <button
                     className="remove"
-                    onClick={this.deleteclickedWish}>
+                    onClick={this.deleteClickedWish}>
                         Remove
                     </button>
                 </div>
