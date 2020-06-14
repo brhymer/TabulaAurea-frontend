@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const endPoint = 'http://localhost:3001/incomes' // to be determined
+const endPoint = 'https://murmuring-chamber-41495.herokuapp.com/incomes'  || 'http://localhost:3001/incomes'
 
 class IncomeModel {
     static all = () => {

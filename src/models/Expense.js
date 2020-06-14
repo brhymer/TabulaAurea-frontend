@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 
-const endPoint = `http://localhost:3001/expenses` //UPDATE
+const endPoint = `https://murmuring-chamber-41495.herokuapp.com/expenses` || `http://localhost:3001/expenses`
 
 class ExpenseModel {
     static all = () => {

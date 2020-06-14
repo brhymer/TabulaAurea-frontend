@@ -1,4 +1,4 @@
-const REACT_APP_API_URL = "http://localhost:3001"
+const REACT_APP_API_URL = `https://murmuring-chamber-41495.herokuapp.com` || `http://localhost:3001`
 
 export default class UserModel {
     static create(data) {

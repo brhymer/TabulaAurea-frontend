@@ -1,8 +1,8 @@
 import axios from 'axios';
 
-const AU = 'http://localhost:3001/gold'
+const AU = 'https://murmuring-chamber-41495.herokuapp.com/gold' || 'http://localhost:3001/gold'
 
-const AG = 'http://localhost:3001/silver'
+const AG = 'https://murmuring-chamber-41495.herokuapp.com/silver' || 'http://localhost:3001/silver'
 
 class InvestModel {
     static gold = () => {

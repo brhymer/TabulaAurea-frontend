@@ -1,7 +1,8 @@
 import axios from 'axios';
 
 
-const endPoint = `http://localhost:3001/liabilities`
+const endPoint = `https://murmuring-chamber-41495.herokuapp.com/liabilities` ||
+`http://localhost:3001/liabilities`
 
 class LiabilityModel {
     static all = () => {

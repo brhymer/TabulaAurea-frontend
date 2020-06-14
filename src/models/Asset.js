@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 
-const endPoint = `http://localhost:3001/assets`
+const endPoint = `https://murmuring-chamber-41495.herokuapp.com/assets` || `http://localhost:3001/assets`
 
 class AssetModel {
     static all = () => {

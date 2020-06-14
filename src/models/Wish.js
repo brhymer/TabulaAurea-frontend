@@ -2,7 +2,7 @@ import axios from 'axios';
 
 
 const endPoint = (
-// https://murmuring-chamber-41495.herokuapp.com/ || 
+`https://murmuring-chamber-41495.herokuapp.com/wishlist` || 
 `http://localhost:3001/wishlist`)
 
 class WishModel {
