@@ -108,6 +108,7 @@ class MonthContainer extends Component {
                 <div className="lr">
                 
                     <section className="left"> <h3>Income Sources</h3>
+                    <p>Standard income sources include wages, sales, rents, interest, dividends, capital gains, etc.</p>
                     <span className="entry">Entry</span>
                     <span className="entry">Cost</span>
                         <Incomes 
@@ -123,7 +124,8 @@ class MonthContainer extends Component {
                         />
                     </section>
                 
-                    <section className="right"> <h3>Expenses</h3> 
+                    <section className="right"> <h3>Expenses</h3>
+                    <p>Standard expenses include rent, utilities, car payments, business costs, transportation costs, taxes, etc.</p> 
                     <span className="entry">Entry</span>
                     <span className="entry">Cost</span>
                         <Expenses 

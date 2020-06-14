@@ -104,8 +104,8 @@ class GoalContainer extends Component {
                 <div className="tb">
                     <div className="top-blurb">What are your financial goals? Don't let your dreams be dreams! Do you want to save up a certain amount?  Pay off a car? Get debt-free? Take some time to set down specific goals along with concrete timeframes for achieving them.</div>
                     <section className="top"><h3>Goals</h3>
-                    <span className="entry">Goal</span>
-                    <span className="entry">To be achived by</span>
+                    <span className="long-entry">Goal</span>
+                    <span className="entry">Achieve by</span>
                         <Goals 
                             goals={this.state.goals}
                             updateGoal={this.updateGoal}
@@ -116,8 +116,8 @@ class GoalContainer extends Component {
                     </section>
                     <hr />
                     <section className="bottom"><h3>Wishlist</h3>
-                    <span className="entry">Item</span>
-                    <span className="entry">Why I want this</span>
+                    <span className="long-entry">Item</span>
+                    <span className="long-entry">Why I want this</span>
                         <Wishlist 
                             wishlist={this.state.wishlist}
                             updateWish={this.updateWish}

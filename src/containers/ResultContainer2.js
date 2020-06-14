@@ -1,22 +1,29 @@
 import React, { Component } from 'react';
 
+const currentUser = localStorage.getItem('userid')
+
 class ResultContainer2 extends Component {
     render(props) {
-        let assetAmts = this.props.assets.map((el) => {
-            return el.value;
-        });
+        // let assetAmts = this.props.assets.map((el) => {
+        //     return el.value;
+        // });
+        let assetAmts = this.props.assets.filter((val) => {
+            return val.userId === currentUser 
+            }).map((el) => el.value)
         let assetSum = assetAmts.reduce(function(a, b){ return a + b; }, 0)
-        let liabAmts = this.props.liabilities.map((ele) => {
-            return ele.value;
-        });
+        let liabAmts = this.props.liabilities.filter((val) => {
+            return val.userId === currentUser 
+            }).map((el) => el.value)
         let liabSum = liabAmts.reduce(function(c, d){ return c + d; }, 0)
         
         let result = `${assetSum - liabSum}`
         let message
         if (result<0) {
-            message = "You need to cut back"
+            message = "You're in debt, consult a financial professional for help."
+        } else if (result==0) {
+            message = "You're breaking even."
         } else {
-            message = "Looking good"
+            message = "Looking good, consider investing to increase your net worth."
         }
         return (
             <div className="result">

@@ -10,7 +10,7 @@ import Register from '../Register';
 export default (props) => (
     
         <section className="cont"><Switch> 
-            <Route exact path='/' component ={ Register }/>
+            <Route exact path='/' component ={ Login }/>
             <Route path='/register' component={ Register }/>
             <Route path='/login' render={ (routeComponentProps) => {
                 return <Login

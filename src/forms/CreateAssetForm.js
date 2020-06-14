@@ -1,17 +1,18 @@
 import React, { Component } from 'react';
 
+
 class CreateAssetForm extends Component {
     state = {
         name: '',
         value: '',
         intRate: '',
-        // userId: ''
+        userId: ''
     }
 
     onInputChange = (event) => {
         this.setState({
             name: event.target.value,
-            // userId: userId
+            userId: localStorage.getItem('userid')
         });
     };
 

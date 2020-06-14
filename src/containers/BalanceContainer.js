@@ -107,6 +107,7 @@ class BalanceContainer extends Component {
                 <h1>Assets & Liabilities Balance Sheet</h1>
                 <div className="lr">
                     <section className="left"><h3>Assets</h3>
+                    <p>An asset is anything that generates income or can be sold.  Examples include cash, bank accounts, stocks, properties, precious metals, and artwork.</p>
                     <span className="entry">Entry</span>
                     <span className="entry">Value</span>
                     <span className="entry">Interest Rate</span>
@@ -124,6 +125,7 @@ class BalanceContainer extends Component {
                     </section>
 
                     <section className="right"><h3>Liabilities</h3>
+                    <p>A liability is something that requires you to spend money.  Examples include debts, mortgages, loans, wages owed, and bills.</p>
                     <span className="entry">Entry</span>
                     <span className="entry">Value</span>
                     <span className="entry">Interest Rate</span>

@@ -22,7 +22,7 @@ class Goal extends Component {
         return (
             <li>
                 <div style={this.state.bodyStyle} className={`${true ? "listy" : ""} ${this.props.index%2===0 ? "greyitem" : ""}`}>
-                    <span className="list-item">{this.props.goal.name}</span>
+                    <span className="goal-item">{this.props.goal.name}</span>
                     <span className="list-item">
                     {/* {new Intl.DateTimeFormat("en-GB", {
                         year: "numeric",

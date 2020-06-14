@@ -133,6 +133,16 @@ h3 {
   width: 110px;
   display: table-cell;
 }
+.long-entry {
+  width: 368px;
+  display: table-cell;
+}
+
+.med-entry {
+  width: 230px;
+  display: table-cell;
+}
+
 li {
   list-style: none;
 }
@@ -146,6 +156,15 @@ li {
   margin: 10px 0;
   font-size: 16px;
   width: 100px;
+  display: table-cell;
+  text-align: left;
+}
+
+.goal-item {
+  padding: 2px 15px 0 0;
+  margin: 10px 0;
+  font-size: 16px;
+  width: 350px;
   display: table-cell;
   text-align: left;
 }

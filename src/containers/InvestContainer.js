@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import InvestModel from '../models/Invest';
-import axios from 'axios';
+
 require('dotenv').config();
 const request = require('request');
 

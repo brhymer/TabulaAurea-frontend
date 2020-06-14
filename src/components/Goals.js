@@ -1,9 +1,13 @@
 import React, { Component } from 'react';
 import Goal from './Goal';
 
+const currentUser = localStorage.getItem('userid')
+
 class Goals extends Component {
     render() {
-        let goalList = this.props.goals.map((goal, index) => {
+        let goalList = this.props.goals.filter((goal, index) => {
+            return goal.userId === currentUser 
+          }).map((goal, index) => {
         return (
             <Goal
                 key={index}

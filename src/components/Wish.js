@@ -19,8 +19,8 @@ class Wish extends Component {
         return (
             <li>
                 <div style={this.state.bodyStyle} className={`${true ? "listy" : ""} ${this.props.index%2===0 ? "greyitem" : ""}`}>
-                    <span className="list-item">{this.props.wish.name}</span>
-                    <span className="list-item">{this.props.wish.reason}</span>
+                    <span className="goal-item">{this.props.wish.name}</span>
+                    <span className="goal-item">{this.props.wish.reason}</span>
                     <button
                     className="edit"
                     onClick={this.toggleBodyForm}>

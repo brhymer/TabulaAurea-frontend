@@ -32,12 +32,13 @@ class Chart extends Component {
         }
         return (
             <div className="chart">
-                <Pie 
+                <Doughnut 
                     
                     data={chartData}
                     options={{
                         title: {display: true, fontSize: "20", text: `${cTitle}` },
-                        legend: {position: "right"}
+                        legend: {position: "right"},
+                        cutoutPercentage: 35
                     }}
                 />
             </div>

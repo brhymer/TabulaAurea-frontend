@@ -1,15 +1,19 @@
 import React, { Component } from 'react';
 import Chart from './Chart';
 
+const currentUser = localStorage.getItem('userid')
+
 class Sum2 extends Component {
 
     render(props) {
-        let amts = this.props.values.map((el) => {
-            return el.value;
-        });
-        let labels = this.props.values.map((el) => {
-            return el.name;
-        });
+
+        let amts = this.props.values.filter((val) => {
+            return val.userId === currentUser 
+            }).map((el) => el.value)
+        let labels = this.props.values.filter((value) => {
+            return value.userId === currentUser
+            }).map((el) => el.name)
+
 
         let sum = amts.reduce(function(a, b){ return a + b; }, 0)
         return (

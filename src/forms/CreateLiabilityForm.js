@@ -4,12 +4,14 @@ class CreateLiabilityForm extends Component {
     state = {
         name: '',
         value: '',
-        intRate: ''
+        intRate: '',
+        userId: ''
     }
 
     onInputChange = (event) => {
         this.setState({
-            name: event.target.value
+            name: event.target.value,
+            userId: localStorage.getItem('userid')
         });
     };
 
@@ -52,7 +54,7 @@ class CreateLiabilityForm extends Component {
                     <input
                         onChange={this.onInputChange3}
                         type="number" id="newItemRate"
-                        value={this.state.amount}
+                        value={this.state.intRate}
                     />
                     <button type="submit" id="addLiability">Save</button>
                 </form> 

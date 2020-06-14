@@ -6,11 +6,13 @@ class CreateExpenseForm extends Component {
     state = {
         name: '',
         amount: '',
+        userId: ''
     }
 
     onInputChange = (event) => {
         this.setState({
-            name: event.target.value
+            name: event.target.value,
+            userId: localStorage.getItem('userid')
         });
     };
     
