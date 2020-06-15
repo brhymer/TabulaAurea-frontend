@@ -35,7 +35,9 @@ class Login extends Component {
     render() {
         return (
             <div className="login">
+                {this.state.errorMessage ? 
                 <p className="err">{ this.state.errorMessage }</p>
+                : <p></p>}
                 <br/>
                 <h2>Login</h2>
                 <br/>
