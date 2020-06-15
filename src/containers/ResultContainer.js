@@ -18,11 +18,11 @@ class ResultContainer extends Component {
         let result = `${incSum - expSum}`
         let message
         if (result<0) {
-            message = "You're losing money.  Try cutting back."
+            message = "You're losing money.  Cut back on non-essentials."
         } else if (result==0) {
             message = "You're breaking even."
         } else {
-            message = "Looking good.  Consider investing."
+            message = "Looking good.  Consider putting that money to work."
         }
 
         return (

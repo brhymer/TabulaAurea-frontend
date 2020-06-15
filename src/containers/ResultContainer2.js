@@ -19,11 +19,11 @@ class ResultContainer2 extends Component {
         let result = `${assetSum - liabSum}`
         let message
         if (result<0) {
-            message = "You're in debt, consult a financial professional for help."
+            message = "You're in debt. Consult a financial professional for help."
         } else if (result==0) {
             message = "You're breaking even."
         } else {
-            message = "Looking good, consider investing to increase your net worth."
+            message = "Looking good. Consider investing to increase your net worth."
         }
         return (
             <div className="result">
