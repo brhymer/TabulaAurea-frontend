@@ -154,6 +154,15 @@ li {
     height: 20px;
 }
 
+.short-item {
+  padding: 2px 15px 0 0;
+  margin: 10px 0;
+  font-size: 16px;
+  width: 80px;
+  display: table-cell;
+  text-align: left;
+}
+
 .list-item {
   padding: 2px 15px 0 0;
   margin: 10px 0;

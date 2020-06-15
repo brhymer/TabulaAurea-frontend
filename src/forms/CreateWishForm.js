@@ -43,7 +43,7 @@ class CreateGoalForm extends Component {
                     <input
                         className="long-input"
                         onChange={this.onInputChange2}
-                        type="reason" id="newItemReason"
+                        type="text" id="newItemReason"
                         value={this.state.reason}
                     />
                     <button type="submit" id="addWish">Save</button>
