@@ -22,6 +22,11 @@ body{
   padding-left: 35%;
 }
 
+.err {
+  background: pink; 
+  color: red
+}
+
 /* =========
    Nav
 ========= */

@@ -5,6 +5,7 @@ class Login extends Component {
     state = {
         email: '',
         password: '',
+        errorMessage: ''
     }
 
     handleChange = (event) => {
@@ -17,21 +18,24 @@ class Login extends Component {
         event.preventDefault()
         UserModel.login(this.state)
         .then(data => {
-            console.log(data)  /////////
             if (!data.data) {
-                console.log("something happened")
                 return false
             }
             this.props.storeUser(data.data)
             this.props.history.push('/month')
         })
-        .catch(err => console.log(err))
+        .catch((err) => {
+            this.setState({
+                errorMessage: err.message
+            })
+        }
 
     }
 
     render() {
         return (
             <div className="login">
+                <p className="err">{ this.state.errorMessage }</p>
                 <br/>
                 <h2>Login</h2>
                 <br/>
