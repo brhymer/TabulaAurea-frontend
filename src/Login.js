@@ -28,7 +28,7 @@ class Login extends Component {
             this.setState({
                 errorMessage: err.message
             })
-        }
+        })
 
     }
 
