@@ -22,7 +22,7 @@ class Liability extends Component {
                                                                     
                     <span className="list-item">{this.props.liability.name}</span>
                     <span className="list-item">{this.props.liability.value}</span>
-                    <span className="list-item">{this.props.liability.intRate}</span>
+                    <span className="short-item">{this.props.liability.intRate}</span>
                     <button
                     className="edit"
                     onClick={this.toggleBodyForm}>

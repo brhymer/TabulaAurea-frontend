@@ -21,7 +21,7 @@ class Asset extends Component {
                 <div style={this.state.bodyStyle} className={`${true ? "listy" : ""} ${this.props.index%2===0 ? "greyitem" : ""}`}>
                     <span className="list-item">{this.props.asset.name}</span>
                     <span className="list-item">{this.props.asset.value}</span>
-                    <span className="list-item">{this.props.asset.intRate}</span>
+                    <span className="short-item">{this.props.asset.intRate}</span>
                     <button
                     className="edit"
                     onClick={this.toggleBodyForm}>
