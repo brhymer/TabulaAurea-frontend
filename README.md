@@ -1,5 +1,5 @@
 
-# Project 4
+# Tabula Area
 
 ## MVP
 
@@ -32,28 +32,3 @@ This app will consist of a user which has a one-to-many relationship to six simp
 
 ![Data Model](./public/data-model.png)
 
-
-## Milestones
-6/4  App, Header, Body, Footer components in place
-
-6/5  Forms
-
-6/6  Auth
-
-6/7  2 Data Models
-
-6/8  4 Data Models
-
-6/9  
-
-6/10 CSS complete
-
-6/11 All Data Models
-
-6/12 MVP
-
-6/13 
-
-6/14
-
-6/15 
